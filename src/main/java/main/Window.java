@@ -14,11 +14,10 @@ public class Window {
     JFrame window;
     JSONArray rooms;
     Room room;
-    public Window() {
-        window = new JFrame();
-
-        window.setVisible(true);
-        window.toFront();
+    JSONObject currentRoom;
+    String[] data = {"0"};
+    public Window() {}
+    public void RunWindow() {
 
         JSONParser parser = new JSONParser();
         try {
@@ -31,6 +30,14 @@ public class Window {
             System.exit(2);
         }
         room = new Room();
-        window.setTitle(room.EmptyRoom(window,rooms));
+
+        while (true) {
+            currentRoom = (JSONObject) rooms.get(Integer.parseInt(data[0]));
+
+            data = room.RoomHandler(currentRoom);
+            System.out.println(data[0] + data[1]);
+
+            break;
+        }
     }
 }
