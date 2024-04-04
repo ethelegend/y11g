@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<y11p:project xmlns:y11p="http://maven.apache.org/POM/4.0.0"
-              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-              xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <y11p:modelVersion>4.0.0</y11p:modelVersion>
+<project xmlns:="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-    <y11p:groupId>groupId</y11p:groupId>
-    <y11p:artifactId>Goblins Using IntelliJ</y11p:artifactId>
-    <y11p:version>"OR 1=1 --"</y11p:version>
-    <y11p:dependencies>
+    <groupId>school.nz.whs</groupId>
+    <artifactId>y11g</artifactId>
+    <version>0.1</version>
 
-        <y11p:dependency>
-            <y11p:groupId>com.googlecode.json-simple</y11p:groupId>
-            <y11p:artifactId>json-simple</y11p:artifactId>
-            <y11p:version>1.1.1</y11p:version>
-        </y11p:dependency>
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
 
-    </y11p:dependencies>
-    <y11p:properties>
-    </y11p:properties>
-    <y11p:build>
-        <y11p:plugins>
-        </y11p:plugins>
-    </y11p:build>
+    <dependencies>
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+        </plugins>
+    </build>
 
 
-</y11p:project>
+</project>

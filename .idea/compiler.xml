@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="y11g2" />
         <module name="y11g" />
         <module name="Goblins Using IntelliJ" />
       </profile>
