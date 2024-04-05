@@ -26,22 +26,14 @@ public class Main {
     }
     private void renderer(JSONObject room) {
         window.getContentPane().removeAll();
-        if (room.containsKey("title")) {
-
-        } else if (debug) {
-
-        } else {
-
-        }
         window.setTitle((room.containsKey("title"))
                 ? (String) room.get("title")
                 : ((debug)
-                        ? Integer.toString(currentRoom)
-                        : ""));
+                ? Integer.toString(currentRoom)
+                : ""));
 
         width = ((Long) room.get("width")).intValue();
         height = ((Long) room.get("height")).intValue();
-        System.out.println(width+""+height);
 
         tile = new JButton[width][height];
         for (int i = 0; i < height; i++) {
@@ -62,7 +54,7 @@ public class Main {
             });
         }
         if (currentRoom == 0) {
-            tile[0][0].setText("Debug");
+            tile[0][0].setText("Toggle Debug");
             tile[0][0].addActionListener(l -> {
                 debug = Boolean.logicalXor(debug, true);
                 renderer((JSONObject) rooms.get(currentRoom));
