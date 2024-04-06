@@ -1,0 +1,132 @@
+{
+  "Hobgoblin": {
+    "stats": {
+      "ac": 18,
+      "hp": {
+        "base": 2,
+        "dice": [
+          8,
+          8
+        ]
+      },
+      "speed": 30
+    },
+    "attacks": [
+      {
+        "name": "Longsword",
+        "reach": 5,
+        "hit": 4,
+        "damage": {
+          "base": 1,
+          "dice": [
+            10
+          ]
+        }
+      },
+      {
+        "name": "Longbow",
+        "reach": 150,
+        "hit": 4,
+        "damage": {
+          "base": 1,
+          "dice": [
+            8
+          ]
+        }
+      }
+    ]
+  },
+
+  "Goblin": {
+    "stats": {
+      "ac": 15,
+      "hp": {
+        "base": 0,
+        "dice": [
+          6,
+          6
+        ]
+      },
+      "speed": 30
+    },
+    "attacks": [
+      {
+        "name": "Scimitar",
+        "reach": 5,
+        "hit": 4,
+        "damage": {
+          "base": 2,
+          "dice": [
+            6
+          ]
+        }
+      },
+      {
+        "name": "Shortbow",
+        "reach": 80,
+        "hit": 4,
+        "damage": {
+          "base": 2,
+          "dice": [
+            6
+          ]
+        }
+      }
+    ]
+  },
+
+  "Giant Rat": {
+    "stats": {
+      "ac": 12,
+      "hp": {
+        "base": 0,
+        "dice": [
+          6,
+          6
+        ]
+      },
+      "speed": 30
+    },
+    "attacks": [
+      {
+        "name": "Bite",
+        "reach": 5,
+        "hit": 4,
+        "damage": {
+          "base": 2,
+          "dice": [
+            4
+          ]
+        }
+      }
+    ]
+  },
+
+  "Wolf": {
+    "stats": {
+      "ac": 13,
+      "hp": {
+        "base": 2,
+        "dice": [
+          8,
+          8
+        ]
+      },
+      "speed": 40
+    },
+    "attacks": [
+      {
+        "name": "Bite",
+        "reach": 5,
+        "hit": 4,
+        "damage": {
+          "base": 2,
+          "dice": [
+            4,
+            4
+          ]
+        }
+      }
+    ]
+  }
+}

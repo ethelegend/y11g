@@ -7,12 +7,8 @@ import java.awt.*;
 
 public class Main {
     JFrame window;
-    int width;
-    int height;
-    JButton[][] tile;
     int currentRoom = 0;
-    JSONObject room;
-    final JSONArray rooms;
+    JSONArray rooms;
     boolean debug = false;
     public Main(JSONArray a){
         window = new JFrame();
@@ -21,21 +17,24 @@ public class Main {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         rooms = a;
-        room = (JSONObject) rooms.get(currentRoom);
-        renderer(room);
+        renderer();
     }
-    private void renderer(JSONObject room) {
+    private void renderer() {
+        JSONObject room = (JSONObject) rooms.get(currentRoom);
+        System.out.println((boolean) ((JSONObject) rooms.get(currentRoom)).get("explored"));
+        boolean explored = (boolean) room.put("explored", true);
+
         window.getContentPane().removeAll();
         window.setTitle((room.containsKey("title"))
                 ? (String) room.get("title")
-                : ((debug)
+                : ((debug || explored)
                 ? Integer.toString(currentRoom)
                 : ""));
 
-        width = ((Long) room.get("width")).intValue();
-        height = ((Long) room.get("height")).intValue();
+        int width = ((Long) room.get("width")).intValue();
+        int height = ((Long) room.get("height")).intValue();
 
-        tile = new JButton[width][height];
+        JButton[][] tile = new JButton[width][height];
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 tile[j][i] = new JButton();
@@ -47,23 +46,26 @@ public class Main {
             JSONObject j = (JSONObject) o;
             int x = ((Long) j.get("x")).intValue();
             int y = ((Long) j.get("y")).intValue();
-            tile[x][y].setText((debug) ? Long.toString((Long) j.get("to")) : (String) j.get("label"));
+            tile[x][y].setText((debug || (boolean) ((JSONObject) rooms.get(((Long) j.get("to")).intValue())).get("explored"))
+                    ? Long.toString((Long) j.get("to"))
+                    : (String) j.get("label"));
             tile[x][y].addActionListener(l -> {
                 currentRoom = ((Long) j.get("to")).intValue();
-                renderer((JSONObject) rooms.get(currentRoom));
+                renderer();
             });
         }
         if (currentRoom == 0) {
             tile[0][0].setText("Toggle Debug");
             tile[0][0].addActionListener(l -> {
                 debug = Boolean.logicalXor(debug, true);
-                renderer((JSONObject) rooms.get(currentRoom));
+                renderer();
             });
         }
 
-        window.setSize(width*100, height*100);
         window.setLayout(new GridLayout(height,width));
+        window.setSize(width*100, height*100);
         window.revalidate();
         window.repaint();
+
     }
 }
