@@ -17,14 +17,24 @@ public class Main {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         rooms = a;
-        renderer();
+        newRoom();
     }
-    private void renderer() {
+    private void newRoom() {
+        window.getContentPane().removeAll();
+
         JSONObject room = (JSONObject) rooms.get(currentRoom);
-        System.out.println((boolean) ((JSONObject) rooms.get(currentRoom)).get("explored"));
+        if (room.containsKey("monsters")) {
+            battle(room);
+        } else {
+            emptyRoom(room);
+        }
+    }
+    private void battle(JSONObject room) {
+        emptyRoom(room);
+    }
+    private void emptyRoom(JSONObject room) {
         boolean explored = (boolean) room.put("explored", true);
 
-        window.getContentPane().removeAll();
         window.setTitle((room.containsKey("title"))
                 ? (String) room.get("title")
                 : ((debug || explored)
@@ -51,14 +61,14 @@ public class Main {
                     : (String) j.get("label"));
             tile[x][y].addActionListener(l -> {
                 currentRoom = ((Long) j.get("to")).intValue();
-                renderer();
+                newRoom();
             });
         }
         if (currentRoom == 0) {
-            tile[0][0].setText("Toggle Debug");
+            tile[0][0].setText("Debug");
             tile[0][0].addActionListener(l -> {
                 debug = Boolean.logicalXor(debug, true);
-                renderer();
+                newRoom();
             });
         }
 

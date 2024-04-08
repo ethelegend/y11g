@@ -29,21 +29,27 @@
         {
           "x": 0,
           "y": 6,
-          "to": 2,
+          "to": 15,
           "label": "v"
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 3,
+      "height": 7,
       "explored": false,
       "exits": [
         {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
+          "x": 2,
+          "y": 2,
+          "to": 3,
+          "label": ">"
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "to": 12,
+          "label": ">"
         }
       ],
       "monsters": [
@@ -53,15 +59,21 @@
       "gold": 14
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 3,
+      "height": 5,
       "explored": false,
       "exits": [
         {
           "x": 0,
           "y": 0,
-          "to": 1,
-          "label": "^"
+          "to": 2,
+          "label": "<"
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "to": 12,
+          "label": "v"
         }
       ],
       "monsters": [
@@ -69,28 +81,46 @@
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 5,
+      "height": 5,
       "explored": false,
       "exits": [
         {
           "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
+          "y": 4,
+          "to": 9,
+          "label": "<"
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "to": 13,
+          "label": "v"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "to": 5,
+          "label": ">"
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 7,
+      "height": 5,
       "explored": false,
       "exits": [
         {
           "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
+          "y": 4,
+          "to": 4,
+          "label": "<"
+        },
+        {
+          "x": 6,
+          "y": 4,
+          "to": 10,
+          "label": ">"
         }
       ],
       "monsters": [
@@ -100,54 +130,84 @@
       "gold": 240
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 3,
+      "height": 3,
       "explored": false,
       "exits": [
         {
-          "x": 0,
+          "x": 2,
           "y": 0,
-          "to": 1,
-          "label": "^"
+          "to": 7,
+          "label": ">"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "to": 10,
+          "label": "v"
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 7,
+      "height": 3,
       "explored": false,
       "exits": [
         {
           "x": 0,
           "y": 0,
-          "to": 1,
-          "label": "^"
+          "to": 6,
+          "label": "<"
+        },
+        {
+          "x": 6,
+          "y": 0,
+          "to": 8,
+          "label": ">"
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 5,
+      "height": 7,
       "explored": false,
       "exits": [
         {
           "x": 0,
           "y": 0,
-          "to": 1,
-          "label": "^"
+          "to": 7,
+          "label": "<"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "to": 11,
+          "label": "<"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "to": 17,
+          "label": "v"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "to": 28,
+          "label": "v"
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 3,
+      "height": 5,
       "explored": false,
       "exits": [
         {
-          "x": 0,
+          "x": 2,
           "y": 0,
-          "to": 1,
-          "label": "^"
+          "to": 4,
+          "label": ">"
         }
       ]
     },
