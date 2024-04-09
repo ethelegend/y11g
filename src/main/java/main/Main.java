@@ -67,7 +67,7 @@ public class Main {
         if (currentRoom == 0) {
             tile[0][0].setText("Debug");
             tile[0][0].addActionListener(l -> {
-                debug = Boolean.logicalXor(debug, true);
+                debug = !debug;
                 newRoom();
             });
         }
