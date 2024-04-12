@@ -1,6 +1,7 @@
 package main;
 import javax.swing.*;
 
+import monsters.Entity;
 import org.json.simple.*;
 
 import java.awt.*;
@@ -21,7 +22,6 @@ public class Main {
     }
     private void newRoom() {
         window.getContentPane().removeAll();
-
         JSONObject room = (JSONObject) rooms.get(currentRoom);
         if (room.containsKey("monsters")) {
             battle(room);

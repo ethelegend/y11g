@@ -1,12 +1,13 @@
 package monsters;
 
-import org.json.simple.JSONObject;
 import weapons.Weapon;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Container;
+import java.awt.GridLayout;
 
 public class Entity {
     int ac;
@@ -16,76 +17,85 @@ public class Entity {
     Weapon[] weapons;
     int pos;
     boolean player;
-    public String Attack(JFrame window, Entity target, int roomRadius) {
-        if (player) {
+    int i;
+    Object waiter;
+    public boolean Attack(JFrame window, Entity target, int roomRadius) {
+        i = 0;
+        if (this.player) {
             return this.ManualAttack(window, target, roomRadius);
         } else {
-            return this.AutomaticAttack(window, target, roomRadius);
+            try {
+                return this.AutomaticAttack(window, target, roomRadius);
+            } catch (InterruptedException e) {
+                return false;
+            }
         }
 
     }
-    public String ManualAttack(JFrame window, Entity target, int roomRadius) {
-        return null;
+    public boolean ManualAttack(JFrame window, Entity target, int roomRadius) {
+        return true;
     }
-    public String AutomaticAttack(JFrame window, Entity target, int roomRadius) {
+    public boolean AutomaticAttack(JFrame window, Entity target, int roomRadius) throws InterruptedException {
+        JButton confirm = new JButton("OK");
+        confirm.addActionListener(l -> {
+            waiter.notifyAll();
+        });
         /*  Explanation:
             The enemies are programmed to advance towards their target, and retreat when under half health.
             The other parts of the code is about if they are close to a wall or their target, in which case they should be stopped.
         */
         int right = (this.pos > target.pos) ? 1 : -1;
-        JButton confirm = new JButton("OK");
-        if (this.maxHP/this.hp < 2) {
+        if (this.maxHP / this.hp < 2) {
             int movementTarget = target.pos + 5 * right;
             if (Math.abs(this.pos - movementTarget) > this.speed) {
-                this.pos -= speed * right;
-                InfoPopup(window, "The enemy moved towards you (" + Math.abs(target.pos - this.pos) + "ft)", confirm);
+                this.pos -= this.speed * right;
+                InfoPopup(window,"The enemy moved towards you (" + Math.abs(target.pos - this.pos) + "ft)", new JButton[]{confirm});
             } else {
                 this.pos = target.pos + 5 * right;
-                InfoPopup(window, "The enemy moved next to you (5ft)", confirm);
+                InfoPopup(window,"The enemy moved next to you (5ft)", new JButton[]{confirm});
+            }
+        } else {
+            int movementTarget = roomRadius * right;
+            if (Math.abs(this.pos - movementTarget) > this.speed) {
+                this.pos += this.speed * right;
+                InfoPopup(window,"The enemy moved away from you (" + Math.abs(target.pos - this.pos) + "ft)", new JButton[]{confirm});
+            } else {
+                this.pos = target.pos + 5 * right;
+                InfoPopup(window,"The enemy moved against the wall (" + Math.abs(target.pos - this.pos) + "ft)", new JButton[]{confirm});
             }
         }
-        int movementTarget = (this.maxHP/this.hp < 2)
-                ? target.pos + 5 * right
-                : roomRadius * right;
-        right = (movementTarget > this.pos) ? 1 : -1;
-        this.pos = (maxHP/hp < 2) // If you are over half health
-                ? (Math.abs(this.pos - target.pos) > this.speed + 5) // If you are not within movement range of the enemy
-                        ? this.pos - this.speed * right // Move towards the target
-                        : target.pos + 5 * right // Move next to the target
-                : (roomRadius - this.pos * right > this.speed) // If you are not within movement range of the wall
-                        ? this.pos + this.speed * right // Move away from the target
-                        : roomRadius * right; // Move against the wall
-        int damage;
-        for (Weapon weapon : this.weapons) {
-            if (weapon.range >= Math.abs(this.pos - target.pos)) {
-                damage = weapon.Attack(target.ac);
+        waiter.wait();
+        InfoPopup(window,"The enemy was too far away to attack", new JButton[] {confirm});
+        for (Weapon w : this.weapons) {
+            if (w.canAttack(this.pos = target.pos)) {
+                int damage = w.attack(target.ac);
+                InfoPopup(window,"The enemy attacked with their " + w.name + " and dealt " + damage + " damage", new JButton[] {confirm});
+                target.hp -= damage;
             }
         }
-
-        return null;
+        waiter.wait();
+        if (target.hp > 0) {
+            InfoPopup(window,"You have passed out", new JButton[] {confirm});
+            waiter.wait();
+            System.exit(0);
+        }
+        return true;
     }
-
-    public void InfoPopup(JFrame window, String labelText, JButton[] button) {
+    public void InfoPopup(JFrame window, String labelText, JButton[] button){
         window.getContentPane().removeAll();
         window.setLayout(new GridLayout(2,1));
-        window.add(new JLabel(labelText));
+        window.add(new JLabel(labelText,SwingConstants.CENTER));
+
         Container buttons = new Container();
         window.add(buttons);
         buttons.setLayout(new GridLayout());
-        for (JButton b : button) {
+        for (JButton b:button) {
             buttons.add(b);
         }
+
+        window.setSize(button.length*100,200);
         window.repaint();
         window.revalidate();
-    }
-    public void InfoPopup(JFrame window, String labelText, JButton button) {
-        window.getContentPane().removeAll();
-        window.setLayout(new GridLayout(2,1));
-        window.add(new JLabel(labelText));
-        window.add(button);
-        Container buttons = new Container();
-        window.add(buttons);
-        window.repaint();
-        window.revalidate();
-    }
+
+}
 }
