@@ -1,10 +1,11 @@
 package main;
 import javax.swing.*;
 
-import monsters.Entity;
+import monsters.*;
 import org.json.simple.*;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Main {
     JFrame window;
@@ -30,6 +31,20 @@ public class Main {
         }
     }
     private void battle(JSONObject room) {
+        ArrayList<String> monsterList;
+
+        Entity[] monsters = new Entity[];
+        for (Object o : ((JSONArray) room.get("monsters"))) {
+            String s = o.toString();
+            switch (s) {
+                case "GiantRat":
+                    monsters.add(new GiantRat());
+                case "Goblin":
+                case "Hobgoblin":
+                case "Wolf":
+            }
+        }
+        window.add(new JLabel("There " + (((JSONArray) room.get("monsters")).indexOf()))))
         emptyRoom(room);
     }
     private void emptyRoom(JSONObject room) {

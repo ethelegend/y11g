@@ -5,7 +5,7 @@ import weapons.Weapon;
 import javax.swing.*;
 import java.awt.*;
 
-public class Attack {
+public class AttackDONOTUSE {
     JFrame window;
     Entity attacker;
     Entity defender;

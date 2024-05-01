@@ -687,8 +687,8 @@
       ],
       "monsters": [
         "Goblin",
-        "Giant Rat",
-        "Giant Rat"
+        "GiantRat",
+        "GiantRat"
       ],
       "gold": 8
     },
