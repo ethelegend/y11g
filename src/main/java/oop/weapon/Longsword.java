@@ -1,4 +1,4 @@
-package weapons;
+package oop.weapon;
 public class Longsword extends Weapon {
     public Longsword(int hitBonus, int damageBonus) {
         this.name = "longsword";

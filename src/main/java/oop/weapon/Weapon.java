@@ -1,4 +1,4 @@
-package weapons;
+package oop.weapon;
 import main.Dice;
 
 public class Weapon {
@@ -11,8 +11,8 @@ public class Weapon {
         return (Math.abs(distance) <= this.range);
     }
     public int attack(int ac) {
-        return (ac > Dice.RollDice(this.hit, new int[]{20}))
+        return (ac > Dice.rollDice(this.hit, new int[]{20}))
                 ? 0
-                : Dice.RollDice(this.base,this.dice);
+                : Dice.rollDice(this.base,this.dice);
     }
 }

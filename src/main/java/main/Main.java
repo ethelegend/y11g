@@ -1,7 +1,7 @@
 package main;
 import javax.swing.*;
 
-import monsters.*;
+import oop.entity.*;
 import org.json.simple.*;
 
 import java.awt.*;
@@ -9,9 +9,12 @@ import java.util.ArrayList;
 
 public class Main {
     JFrame window;
-    int currentRoom = 0;
+    int currentRoom;
+    int previousRoom;
     JSONArray rooms;
-    boolean debug = false;
+    boolean debug;
+    Entity player = new Warrior();
+    final int monsterTypes = 4; // Replace if you add more monsters
     public Main(JSONArray a){
         window = new JFrame();
         window.setVisible(true);
@@ -25,27 +28,87 @@ public class Main {
         window.getContentPane().removeAll();
         JSONObject room = (JSONObject) rooms.get(currentRoom);
         if (room.containsKey("monsters")) {
-            battle(room);
+            occupiedRoom(room);
         } else {
             emptyRoom(room);
         }
     }
-    private void battle(JSONObject room) {
-        ArrayList<String> monsterList;
-
-        Entity[] monsters = new Entity[];
-        for (Object o : ((JSONArray) room.get("monsters"))) {
-            String s = o.toString();
-            switch (s) {
-                case "GiantRat":
-                    monsters.add(new GiantRat());
+    private void occupiedRoom(JSONObject room) {
+        ArrayList<String> monsterList = (ArrayList<String>) room.get("monsters");
+        Entity[] monsters = new Entity[monsterList.size()];
+        for (int i = 0; i < monsterList.size(); i++) {
+            switch (monsterList.get(i)) {
+                case "Giant Rat":
+                    monsters[i] = new GiantRat();
+                    break;
                 case "Goblin":
+                    monsters[i] = new Goblin();
+                    break;
                 case "Hobgoblin":
+                    monsters[i] = new Hobgoblin();
+                    break;
                 case "Wolf":
+                    monsters[i] = new Wolf();
+                    break;
             }
         }
-        window.add(new JLabel("There " + (((JSONArray) room.get("monsters")).indexOf()))))
-        emptyRoom(room);
+        if (monsterList.size() == 1) {
+            window.add(new JLabel("There is 1 " + monsterList.get(0) + " in this room.", SwingConstants.CENTER));
+        } else {
+            int[] monsterCount = new int[monsterTypes];
+            for (int i = 0; i < monsterTypes; i++) {
+                if (i == monsterList.size()) {break;}
+                monsterCount[i]++;
+                for (int j = i + 1; j < monsterList.size(); j++) {
+                    if (monsterList.get(i).equals(monsterList.get(j))) {
+                        monsterCount[i]++;
+                        monsterList.remove(j);
+                        j--;
+                    }
+                }
+            }
+            String text = "There " + ((monsterCount[0] == 1) ? "is " : "are ");
+            for (int i = 0; i < monsterList.size(); i++) {
+                String s = monsterCount[i] + " " + monsterList.get(i) + ((monsterCount[i] == 1) ? " " : "s ");
+                text = text.concat(s);
+                System.out.println(text);
+
+                if (monsterCount[i+1] == 0) {
+                    text = text.concat("in this room.");
+                } else {
+                    if (monsterList.size() > 2) {
+                        text = text.concat(", ");
+                    }
+                    if (monsterCount[i+2] == 0) {
+                        text = text.concat("and ");
+                    }
+                }
+
+            }
+            window.add(new JLabel(text, SwingConstants.CENTER));
+        }
+        JPanel options = new JPanel();
+        window.add(options);
+        options.setLayout(new GridLayout());
+        JButton retreat = new JButton("Retreat");
+        options.add(retreat);
+        retreat.addActionListener(l -> {
+            currentRoom = previousRoom;
+            newRoom();
+        });
+        JButton fight = new JButton("Fight");
+        options.add(fight);
+        fight.addActionListener(l -> {
+            battle(room, monsters);
+
+        });
+        window.setLayout(new GridLayout(2,1));
+        window.setSize(Math.max(options.getComponentCount() * 100, (int) window.getPreferredSize().getWidth() + 10), 200);
+    }
+    public void battle(JSONObject room, Entity[] monsters) {
+        for (Entity m: monsters) {
+            m.attack(window, player, Math.max((int) (((long) room.get("width"))), (int) (((long) room.get("height")))));
+        }
     }
     private void emptyRoom(JSONObject room) {
         boolean explored = (boolean) room.put("explored", true);
@@ -75,6 +138,7 @@ public class Main {
                     ? Long.toString((Long) j.get("to"))
                     : (String) j.get("label"));
             tile[x][y].addActionListener(l -> {
+                previousRoom = currentRoom;
                 currentRoom = ((Long) j.get("to")).intValue();
                 newRoom();
             });

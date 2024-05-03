@@ -1,4 +1,4 @@
-package weapons;
+package oop.weapon;
 
 public class Scimitar extends Weapon {
     public Scimitar(int hitBonus, int damageBonus) {

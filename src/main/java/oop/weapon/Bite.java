@@ -1,4 +1,4 @@
-package weapons;
+package oop.weapon;
 
 public class Bite extends Weapon {
     public Bite(int hitBonus, int damageBonus, int[] dice) {

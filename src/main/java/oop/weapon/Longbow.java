@@ -1,4 +1,4 @@
-package weapons;
+package oop.weapon;
 
 public class Longbow extends Weapon {
     public Longbow(int hitBonus, int damageBonus) {

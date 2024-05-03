@@ -280,15 +280,15 @@
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 3,
+      "height": 5,
       "explored": false,
       "exits": [
         {
           "x": 0,
-          "y": 0,
+          "y": 2,
           "to": 1,
-          "label": "^"
+          "label": "<"
         }
       ],
       "monsters": [
@@ -687,8 +687,8 @@
       ],
       "monsters": [
         "Goblin",
-        "GiantRat",
-        "GiantRat"
+        "Giant Rat",
+        "Giant Rat"
       ],
       "gold": 8
     },

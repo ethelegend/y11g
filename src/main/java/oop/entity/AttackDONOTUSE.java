@@ -1,6 +1,6 @@
-package monsters;
+package oop.entity;
 
-import weapons.Weapon;
+import oop.weapon.Weapon;
 
 import javax.swing.*;
 import java.awt.*;
