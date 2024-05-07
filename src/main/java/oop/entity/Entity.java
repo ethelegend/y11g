@@ -18,28 +18,30 @@ public class Entity {
     int pos;
     boolean player;
     int i;
+    Thread thread;
     public boolean attack(JFrame window, Entity target, int roomRadius) {
         i = 0;
-        if (this.player) {
-            return this.manualAttack(window, target, roomRadius);
-        } else {
-            try {
-                return this.automaticAttack(window, target, roomRadius);
-            } catch (InterruptedException e) {
-                return false;
+        thread = new Thread(()->{
+            if (this.player) {
+                this.manualAttack(window, target, roomRadius);
+            } else {
+                try {
+                    this.automaticAttack(window, target, roomRadius);
+                } catch (InterruptedException ignored) {
+                }
             }
-        }
-
-    }
-    public boolean manualAttack(JFrame window, Entity target, int roomRadius) {
+        });
+        thread.start();
+        while (thread.isAlive()) {}
         return true;
     }
-    public boolean automaticAttack(JFrame window, Entity target, int roomRadius) throws InterruptedException {
-
-        Object waiter = new Object();
+    public void manualAttack(JFrame window, Entity target, int roomRadius) {
+        return;
+    }
+    public void automaticAttack(JFrame window, Entity target, int roomRadius) throws InterruptedException {
         JButton confirm = new JButton("OK");
         confirm.addActionListener(l -> {
-            waiter.notifyAll();
+            thread.notifyAll();
         });
         /*  Explanation:
             The enemies are programmed to advance towards their target, and retreat when under half health.
@@ -65,7 +67,14 @@ public class Entity {
                 infoPopup(window,"The enemy moved against the wall (" + Math.abs(target.pos - this.pos) + "ft)", new JButton[]{confirm});
             }
         }
-        waiter.wait();
+        System.out.println("the enemy");
+        synchronized (thread){
+            try{
+                thread.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
         infoPopup(window,"The enemy was too far away to attack", new JButton[] {confirm});
         for (Weapon w : this.weapons) {
             if (w.canAttack(this.pos = target.pos)) {
@@ -74,17 +83,27 @@ public class Entity {
                 target.hp -= damage;
             }
         }
-        waiter.wait();
+        synchronized (thread){
+            try{
+                thread.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
         if (target.hp > 0) {
             infoPopup(window,"You have passed out", new JButton[] {confirm});
-            waiter.wait();
+            synchronized (thread){
+                try{
+                    thread.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
             System.exit(0);
         }
-        return true;
     }
     public void infoPopup(JFrame window, String labelText, JButton[] button){
         window.getContentPane().removeAll();
-        window.setLayout(new GridLayout(2,1));
         window.add(new JLabel(labelText,SwingConstants.CENTER));
 
         Container buttons = new Container();
@@ -94,9 +113,11 @@ public class Entity {
             buttons.add(b);
         }
 
-        window.setSize(button.length*100,200);
-        window.repaint();
-        window.revalidate();
 
-}
+        window.setLayout(new GridLayout(2,1));
+        window.setSize((int) window.getPreferredSize().getWidth() + 10, 200);
+        window.revalidate();
+        window.repaint();
+        System.out.println("the window");
+    }
 }

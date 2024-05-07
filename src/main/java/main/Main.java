@@ -8,7 +8,6 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Main {
-    JFrame window;
     int currentRoom;
     int previousRoom;
     JSONArray rooms;
@@ -16,16 +15,11 @@ public class Main {
     Entity player = new Warrior();
     final int monsterTypes = 4; // Replace if you add more monsters
     public Main(JSONArray a){
-        window = new JFrame();
-        window.setVisible(true);
-        window.toFront();
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         rooms = a;
         newRoom();
     }
     private void newRoom() {
-        window.getContentPane().removeAll();
+        Window.window.getContentPane().removeAll();
         JSONObject room = (JSONObject) rooms.get(currentRoom);
         if (room.containsKey("monsters")) {
             occupiedRoom(room);
@@ -53,7 +47,7 @@ public class Main {
             }
         }
         if (monsterList.size() == 1) {
-            window.add(new JLabel("There is 1 " + monsterList.get(0) + " in this room.", SwingConstants.CENTER));
+            Window.window.add(new JLabel("There is 1 " + monsterList.get(0) + " in this room.", SwingConstants.CENTER));
         } else {
             int[] monsterCount = new int[monsterTypes];
             for (int i = 0; i < monsterTypes; i++) {
@@ -85,10 +79,10 @@ public class Main {
                 }
 
             }
-            window.add(new JLabel(text, SwingConstants.CENTER));
+            Window.window.add(new JLabel(text, SwingConstants.CENTER));
         }
         JPanel options = new JPanel();
-        window.add(options);
+        Window.window.add(options);
         options.setLayout(new GridLayout());
         JButton retreat = new JButton("Retreat");
         options.add(retreat);
@@ -102,18 +96,18 @@ public class Main {
             battle(room, monsters);
 
         });
-        window.setLayout(new GridLayout(2,1));
-        window.setSize(Math.max(options.getComponentCount() * 100, (int) window.getPreferredSize().getWidth() + 10), 200);
+        Window.window.setLayout(new GridLayout(2,1));
+        Window.window.setSize(Math.max(options.getComponentCount() * 100, (int) Window.window.getPreferredSize().getWidth() + 10), 200);
     }
     public void battle(JSONObject room, Entity[] monsters) {
         for (Entity m: monsters) {
-            m.attack(window, player, Math.max((int) (((long) room.get("width"))), (int) (((long) room.get("height")))));
+            m.attack(Window.window, player, Math.max((int) (((long) room.get("width"))), (int) (((long) room.get("height")))));
         }
     }
     private void emptyRoom(JSONObject room) {
         boolean explored = (boolean) room.put("explored", true);
 
-        window.setTitle((room.containsKey("title"))
+        Window.window.setTitle((room.containsKey("title"))
                 ? (String) room.get("title")
                 : ((debug || explored)
                 ? Integer.toString(currentRoom)
@@ -126,7 +120,7 @@ public class Main {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 tile[j][i] = new JButton();
-                window.add(tile[j][i]);
+                Window.window.add(tile[j][i]);
             }
         }
         JSONArray exits = (JSONArray) room.get("exits");
@@ -151,10 +145,10 @@ public class Main {
             });
         }
 
-        window.setLayout(new GridLayout(height,width));
-        window.setSize(width*100, height*100);
-        window.revalidate();
-        window.repaint();
+        Window.window.setLayout(new GridLayout(height,width));
+        Window.window.setSize(width*100, height*100);
+        Window.window.revalidate();
+        Window.window.repaint();
 
     }
 }
