@@ -8,6 +8,7 @@ public class Weapon {
     int base;
     int[] dice;
     public boolean canAttack(int distance) {
+        System.out.println(Math.abs(distance) <= this.range);
         return (Math.abs(distance) <= this.range);
     }
     public int attack(int ac) {
