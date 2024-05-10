@@ -15,7 +15,6 @@ public class Warrior extends Entity {
                 new Longsword(4,1),
                 new Longbow(4,1)
         };
-        this.player = true;
     }
 }
 
