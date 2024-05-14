@@ -11,6 +11,7 @@ import java.awt.Container;
 import java.awt.GridLayout;
 
 public class Entity {
+    public String name;
     public int ac;
     public int speed;
     public int hp;

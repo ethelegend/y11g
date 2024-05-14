@@ -1,6 +1,5 @@
 package main;
 
-import main.Window;
 import oop.entity.Entity;
 import oop.weapon.Weapon;
 
@@ -8,14 +7,14 @@ import javax.swing.*;
 
 public class Attack {
     Entity player;
-    Entity[] monster;
+    Entity[] monsters;
     int roomRadius;
     int entity;
     int step;
     JButton[] options;
     public Attack(Entity p, Entity[] m, int r) {
         player = p;
-        monster = m;
+        monsters = m;
         roomRadius = r;
         entity = m.length;
         battle();
@@ -23,10 +22,10 @@ public class Attack {
 
     public void battle() {
         step = 0;
-        if (entity == monster.length) {
+        if (entity == monsters.length) {
             entity = 0;
             battle();
-            //manualAttack(monster[0]);
+            manualAttack(0);
         } else {
             if (entity == 0) {
                 options = new JButton[1];
@@ -40,11 +39,48 @@ public class Attack {
             automaticAttack();
         }
     }
-    public void manualAttack() {
-        return;
+    public void manualAttack(int o) {
+        switch (step) {
+            case 0:
+                options = new JButton[2*player.speed/5+1];
+                for (int i = 0; i < options.length; i++) {
+                    int f = 5*(i - options.length/2); // must be final or semi-final
+                    options[i] = new JButton();
+                    options[i].setText(Math.abs(f) + "ft");
+                    options[i].setActionCommand(Integer.toString(i));
+                    options[i].addActionListener(l -> {
+                        step++;
+                        manualAttack(f);
+                    });
+                    for (int j = 0; j < monsters.length; j++) {
+                        if (player.pos + f == monsters[j].pos) {
+                            options[i].setText(monsters[j].name + " (" + monsters[j].hp + "/" + monsters[j].maxHP + ")");
+                            break;
+                        }
+                    }
+                }
+            case 1:
+                options = new JButton[monsters.length];
+                for (int i = 0; i < options.length; i++) {
+                    options[i] = new JButton();
+                    options[i].setText(monsters[i].name);
+                    options[i].setActionCommand(Integer.toString(i));
+                    int f = i; // must be final or semi-final
+                    options[i].addActionListener(l -> {
+                        step++;
+                        manualAttack(f);
+                    });
+                }
+                Window.infoPopup("Which enemy will you attack?", options);
+                break;
+            case 2:
+                battle();
+                break;
+        }
+
     }
     public void automaticAttack() {
-        Entity enemy = monster[entity];
+        Entity enemy = monsters[entity];
         switch (step) {
             case 0:
                 /*  Explanation:
