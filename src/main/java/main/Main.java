@@ -28,26 +28,29 @@ public class Main {
         }
     }
     private void occupiedRoom(JSONObject room) {
-        ArrayList<String> monsterList = (ArrayList<String>) room.get("monsters");
-        Entity[] monsters = new Entity[monsterList.size()];
-        for (int i = 0; i < monsterList.size(); i++) {
-            switch (monsterList.get(i)) {
+        Entity[] monsters = new Entity[((JSONArray) room.get("monsters")).size()];
+        ArrayList<String> monsterList = new ArrayList<String>();
+
+        for (int i = 0; i < monsters.length; i++) {
+            JSONObject m = (JSONObject) ((JSONArray) room.get("monsters")).get(i);
+            monsterList.add((String) m.get("type"));
+            switch ((String) m.get("type")) {
                 case "Giant Rat":
-                    monsters[i] = new GiantRat();
+                    monsters[i] = new GiantRat((int)((long) m.get("pos")), (int)((long) m.get("gold")));
                     break;
                 case "Goblin":
-                    monsters[i] = new Goblin();
+                    monsters[i] = new Goblin((int)((long) m.get("pos")), (int)((long) m.get("gold")));
                     break;
                 case "Hobgoblin":
-                    monsters[i] = new Hobgoblin();
+                    monsters[i] = new Hobgoblin((int)((long) m.get("pos")), (int)((long) m.get("gold")));
                     break;
                 case "Wolf":
-                    monsters[i] = new Wolf();
+                    monsters[i] = new Wolf((int)((long) m.get("pos")), (int)((long) m.get("gold")));
                     break;
             }
         }
         String text;
-        if (monsterList.size() == 1) {
+        if (monsters.length == 1) {
             text = "There is 1 " + monsterList.get(0) + " in this room.";
         } else {
             int[] monsterCount = new int[monsterTypes];
@@ -94,7 +97,7 @@ public class Main {
     }
     public void battle(JSONObject room, Entity[] monsters) {
         for (Entity m: monsters) {
-            new Attack(player, monsters, Math.max((int) ((long) room.get("width")), (int) ((long) room.get("height"))));
+            new Attack(player, monsters, Math.max((int) ((long) room.get("width")), (int) ((long) room.get("height")))/2);
         }
     }
     private void emptyRoom(JSONObject room) {

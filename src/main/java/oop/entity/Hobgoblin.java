@@ -6,7 +6,7 @@ import oop.weapon.Longbow;
 
 
 public class Hobgoblin extends Entity {
-    public Hobgoblin() {
+    public Hobgoblin(int p, int g) {
         this.name = "Hobgoblin";
         this.ac = 18;
         this.speed = 30;
@@ -16,5 +16,7 @@ public class Hobgoblin extends Entity {
                 new Longsword(4,1),
                 new Longbow(4,1)
         };
+        this.pos = p;
+        this.gold = p;
     }
 }

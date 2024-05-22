@@ -5,7 +5,7 @@ import oop.weapon.Bite;
 
 
 public class Wolf extends Entity {
-    public Wolf() {
+    public Wolf(int p, int g) {
         this.name = "Wolf";
         this.ac = 13;
         this.speed = 40;
@@ -14,6 +14,8 @@ public class Wolf extends Entity {
         this.weapons = new Weapon[]{
                 new Bite(4,2,new int[]{4,4})
         };
+        this.pos = p;
+        this.gold = p;
     }
 }
 

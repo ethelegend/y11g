@@ -16,6 +16,8 @@ public class Attack {
         player = p;
         monsters = m;
         roomRadius = r;
+        player.pos = r;
+        System.out.println(player.pos);
         entity = m.length;
         battle();
     }
@@ -40,9 +42,22 @@ public class Attack {
         }
     }
     public void manualAttack(int o) {
+        System.out.println(step);
         switch (step) {
             case 0:
-                options = new JButton[2*player.speed/5+1];
+                int p;
+                if (roomRadius - Math.abs(player.pos) > player.speed) {
+                    if (roomRadius + Math.abs(player.pos) > player.speed) {
+                        options = new JButton[2*roomRadius + 1];
+                        p = - player.pos - roomRadius;
+                    } else {
+                        options = new JButton[2*roomRadius + 1 - Math.abs(player.pos)];
+                        p = (player.pos > 0) ? player.pos - player.speed : - player.pos - roomRadius;
+                    }
+                } else {
+                    options = new JButton[2*player.speed/5+1];
+                    p = player.pos - player.speed;
+                }
                 for (int i = 0; i < options.length; i++) {
                     int f = 5*(i - options.length/2); // must be final or semi-final
                     options[i] = new JButton();
@@ -59,11 +74,13 @@ public class Attack {
                         }
                     }
                 }
+                Window.infoPopup("Where will you move?", options);
+                break;
             case 1:
+                player.pos += o;
                 options = new JButton[monsters.length];
                 for (int i = 0; i < options.length; i++) {
-                    options[i] = new JButton();
-                    options[i].setText(monsters[i].name);
+                    options[i] = new JButton(monsters[i].name + " (" + monsters[i].hp + "/" + monsters[i].maxHP + ")");
                     options[i].setActionCommand(Integer.toString(i));
                     int f = i; // must be final or semi-final
                     options[i].addActionListener(l -> {

@@ -53,8 +53,16 @@
         }
       ],
       "monsters": [
-        "Goblin",
-        "Wolf"
+        {
+          "type": "Goblin",
+          "pos": 0,
+          "gold": 7
+        },
+        {
+          "type": "Wolf",
+          "pos": -5,
+          "gold": 7
+        }
       ],
       "gold": 14
     },
@@ -292,13 +300,21 @@
         }
       ],
       "monsters": [
-        "Goblin",
-        "Goblin"
+        {
+          "type": "Goblin",
+          "pos": 5,
+          "gold": 0
+        },
+        {
+          "type": "Goblin",
+          "pos": -5,
+          "gold": 0
+        }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 5,
+      "height": 3,
       "explored": false,
       "exits": [
         {
@@ -309,7 +325,11 @@
         }
       ],
       "monsters": [
-        "Hobgoblin"
+        {
+          "type": "Hobgoblin",
+          "pos": 0,
+          "gold": 0
+        }
       ]
     },
     {

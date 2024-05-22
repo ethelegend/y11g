@@ -18,4 +18,5 @@ public class Entity {
     public int maxHP;
     public Weapon[] weapons;
     public int pos;
+    public int gold;
 }

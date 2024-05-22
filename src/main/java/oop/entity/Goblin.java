@@ -6,7 +6,7 @@ import oop.weapon.Shortbow;
 
 
 public class Goblin extends Entity {
-    public Goblin() {
+    public Goblin(int p, int g) {
         this.name = "Goblin";
         this.ac = 15;
         this.speed = 30;
@@ -16,5 +16,7 @@ public class Goblin extends Entity {
                 new Scimitar(4,2),
                 new Shortbow(4,2)
         };
+        this.pos = p;
+        this.gold = p;
     }
 }
