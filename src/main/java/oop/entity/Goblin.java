@@ -17,6 +17,6 @@ public class Goblin extends Entity {
                 new Shortbow(4,2)
         };
         this.pos = p;
-        this.gold = p;
+        this.gold = g;
     }
 }

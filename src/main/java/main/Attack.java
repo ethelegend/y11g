@@ -16,8 +16,8 @@ public class Attack {
         player = p;
         monsters = m;
         roomRadius = r;
-        player.pos = r;
-        System.out.println(player.pos);
+        player.pos = -r;
+        System.out.println(monsters[0].pos);
         entity = m.length;
         battle();
     }
@@ -42,13 +42,12 @@ public class Attack {
         }
     }
     public void manualAttack(int o) {
-        System.out.println(step);
         switch (step) {
             case 0:
                 int p;
-                if (roomRadius - Math.abs(player.pos) > player.speed) {
-                    if (roomRadius + Math.abs(player.pos) > player.speed) {
-                        options = new JButton[2*roomRadius + 1];
+                if (roomRadius - Math.abs(player.pos) < player.speed) {
+                    if (roomRadius + Math.abs(player.pos) < player.speed) {
+                        options = new JButton[2*roomRadius/5 + 1];
                         p = - player.pos - roomRadius;
                     } else {
                         options = new JButton[2*roomRadius + 1 - Math.abs(player.pos)];
@@ -59,20 +58,24 @@ public class Attack {
                     p = player.pos - player.speed;
                 }
                 for (int i = 0; i < options.length; i++) {
-                    int f = 5*(i - options.length/2); // must be final or semi-final
+                    int f = p; // must be final or semi-final
                     options[i] = new JButton();
                     options[i].setText(Math.abs(f) + "ft");
-                    options[i].setActionCommand(Integer.toString(i));
-                    options[i].addActionListener(l -> {
-                        step++;
-                        manualAttack(f);
-                    });
+
                     for (int j = 0; j < monsters.length; j++) {
                         if (player.pos + f == monsters[j].pos) {
                             options[i].setText(monsters[j].name + " (" + monsters[j].hp + "/" + monsters[j].maxHP + ")");
+                            System.out.println(player.pos + "," + monsters[j].pos + "," + f);
                             break;
                         }
+                        if (j + 1 == monsters.length) {
+                            options[i].addActionListener(l -> {
+                                step++;
+                                manualAttack(f);
+                            });
+                        }
                     }
+                    p += 5;
                 }
                 Window.infoPopup("Where will you move?", options);
                 break;

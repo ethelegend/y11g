@@ -97,7 +97,7 @@ public class Main {
     }
     public void battle(JSONObject room, Entity[] monsters) {
         for (Entity m: monsters) {
-            new Attack(player, monsters, Math.max((int) ((long) room.get("width")), (int) ((long) room.get("height")))/2);
+            new Attack(player, monsters, Math.max((int) ((long) room.get("width")), (int) ((long) room.get("height")))/2*5);
         }
     }
     private void emptyRoom(JSONObject room) {

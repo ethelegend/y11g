@@ -17,6 +17,6 @@ public class Hobgoblin extends Entity {
                 new Longbow(4,1)
         };
         this.pos = p;
-        this.gold = p;
+        this.gold = g;
     }
 }

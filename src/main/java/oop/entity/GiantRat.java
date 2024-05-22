@@ -15,7 +15,7 @@ public class GiantRat extends Entity {
                 new Bite(4,2,new int[]{4})
         };
         this.pos = p;
-        this.gold = p;
+        this.gold = g;
     }
 }
 
