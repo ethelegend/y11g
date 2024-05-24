@@ -1,5 +1,5 @@
 package main;
-public class Dice {
+public class Dice { // Simulates rolling dice
     public static int rollDice(int base, int[] dice) {
         int result = base;
         for (int i : dice) {

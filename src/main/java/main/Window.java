@@ -1,9 +1,13 @@
 package main;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import java.awt.GridLayout;
 
-public class Window {
+public class Window { // Dedicated class to contain static JFrame and default layout
     public static JFrame window;
 
     public Window() {
