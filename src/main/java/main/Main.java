@@ -22,7 +22,7 @@ public class Main {
         rooms = a; // Initialises the JSONArray
         newRoom();
     }
-    private void newRoom() {
+    public void newRoom() {
         JSONObject room = (JSONObject) rooms.get(currentRoom); // Gets the current room
         if (room.containsKey("monsters")) {
             occupiedRoom(room);
@@ -94,15 +94,13 @@ public class Main {
         });
         JButton fight = new JButton("Fight");
         fight.addActionListener(l -> {
+            room.remove("monsters");
             battle(room, monsters);
-
         });
         Window.infoPopup(text, new JButton[]{retreat, fight});
     }
-    public void battle(JSONObject room, Entity[] monsters) {
-        for (Entity m: monsters) {
-            new Attack(player, monsters, Math.max((int) ((long) room.get("width")), (int) ((long) room.get("height")))/2*5);
-        }
+    private void battle(JSONObject room, Entity[] monsters) {
+        new Attack(player, monsters, Math.max((int) ((long) room.get("width")), (int) ((long) room.get("height")))/2*5, this);
     }
     private void emptyRoom(JSONObject room) {
         Window.window.getContentPane().removeAll();
