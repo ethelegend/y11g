@@ -43,49 +43,32 @@ public class Attack {
         step++;
         switch (step) {
             case 1:
-                int p;
-                // This code calculates how many tiles you can move to (options.length), and how far away the leftmost accessible tile is (p), which is used to calculate the relative position of each tile
-                if (roomRadius - Math.abs(player.pos) < player.speed) {
-                    if (roomRadius + Math.abs(player.pos) < player.speed) { // You can reach both sides of the room
-                        options = new JButton[2*roomRadius/5 + 1];
-                        p = - player.pos - roomRadius;
-                    } else { // You can reach one side of the room
-                        options = new JButton[2*roomRadius + 1 - Math.abs(player.pos)];
-                        p = (player.pos > 0) ? player.pos - player.speed : - player.pos - roomRadius;
-                    }
-                } else { // You can't reach the sides of the room
-                    options = new JButton[2*player.speed/5+1];
-                    p = player.pos - player.speed;
-                }
+                options = new JButton[2*roomRadius/5 + 1];
+                int p = -player.pos - roomRadius;
                 for (int i = 0; i < options.length; i++) {
                     // i is the index, p is the relative position
-                    for (int j = 0; j < monsters.length; j++) { // Checks every monster for each tile. Would be much faster to do it the other way round, but I'm lazy
-                        if (player.pos + p == monsters[j].pos) { // If an enemy is on this tile, set
-                            options[i] = new JButton(monsters[j].name + " (" + monsters[j].hp + "/" + monsters[j].maxHP + ")");
-                            break;
-                        }
-                        if (j == monsters.length - 1) { // If no monsters are on this tile
-                            int f = i; // must be final or semi-final
-                            options[i] = new JButton(Math.abs(p) + "ft");
-                            System.out.println(step + "a");
-                            options[i].addActionListener(l -> {
-                                System.out.println(step + "b");
-                                manualAttack(f);
-                            });
-                        }
+                    if (player.canMove(p)) {
+                        options[i] = new JButton(Math.abs(p) + "ft");
+                        final int f = p;
+                        options[i].addActionListener(l -> manualAttack(f));
+                    } else {
+                        options[i] = new JButton();
                     }
-                    p += 5;
+                    p+=5;
+                }
+                for (int i = 0; i < monsters.length; i++) {
+                    options[(monsters[i].pos + roomRadius)/5] = new JButton(monsters[i].name + " (" + monsters[i].hp + "/" + monsters[i].maxHP + ")");
                 }
                 Window.infoPopup("Where will you move?", options);
                 break;
             case 2: // Choosing which enemy to attack, fairly self-explanatory
                 System.out.println("hi");
-                player.pos += 5*o;
+                player.pos += o;
                 options = new JButton[monsters.length + 1];
                 for (int i = 0; i < monsters.length; i++) {
                     if (player.weapons[player.weapons.length - 1].canAttack(monsters[i].pos)) {
                         options[i] = new JButton(monsters[i].name + " (" + monsters[i].hp + "/" + monsters[i].maxHP + ", " + Math.abs(player.pos - monsters[i].pos) + "ft)");
-                        int f = i; // must be final or semi-final
+                        final int f = i; // must be final or semi-final
                         options[i].addActionListener(l -> {
                             manualAttack(f);
                         });
@@ -101,31 +84,32 @@ public class Attack {
                 target = monsters[o];
                 System.out.println("bye");
                 int c;
-                for (c = 0; c < player.weapons.length; c++) {
-                    if (player.weapons[c].canAttack(player.pos - monsters[o].pos)) {
+                for (c = 1; c < monsters.length; c++) {
+                    if (player.weapons[player.weapons.length - c].canAttack(player.pos - monsters[o].pos)) {
                         break;
                     }
                 }
+                System.out.println(c);
                 if (c == 0) {
                     options = new JButton[1];
                     options[0] = new JButton("OK");
-                    options[0].addActionListener(l -> {
-                        battle();
-                    });
+                    options[0].addActionListener(l -> battle());
                     Window.infoPopup("You are too far away to attack", options);
                 } else {
                     options = new JButton[c];
                     for (int i = 0; i < options.length; i++) {
                         options[i] = new JButton(player.weapons[i].name);
-                        int f = i; // must be final or semi-final
+                        final int f = i; // must be final or semi-final
                         options[i].addActionListener(l -> {
                             manualAttack(player.weapons[f].attack(target.ac));
                         });
                     }
-                    Window.infoPopup("Which enemy will you attack?", options);
+                    Window.infoPopup("What weapon will you use?", options);
                 }
                 break;
             case 4:
+
+            case 5:
                 options = new JButton[1];
                 options[0] = new JButton("OK");
                 if (o == 0) {
@@ -148,7 +132,7 @@ public class Attack {
 
                     Window.infoPopup("You dealt " + o + " damage (" + target.hp + "/" + target.maxHP + ")", options);
                 }
-            case 5:
+            case 6:
                 if (monsters.length > 1) {
                     Entity[] monstersTemp = new Entity[monsters.length - 1];
                     for (int i = 0; i < monstersTemp.length; i++) {
@@ -184,7 +168,7 @@ public class Attack {
                 if (target.maxHP / target.hp < 2) {
                     // The enemy is moving towards you
                     int movementTarget = player.pos + 5 * right;
-                    if (Math.abs(target.pos - movementTarget) > target.speed) {
+                    if (target.canMove(movementTarget)) {
                         // The enemy is too far away to reach you
                         target.pos -= target.speed * right;
                         Window.infoPopup("The enemy moved towards you (" + Math.abs(player.pos - target.pos) + "ft)", options);
@@ -196,7 +180,7 @@ public class Attack {
                 } else {
                     // The enemy is retreating
                     int movementTarget = roomRadius * right;
-                    if (Math.abs(target.pos - movementTarget) > target.speed) {
+                    if (target.canMove(movementTarget)) {
                         // The enemy has space to retreat
                         target.pos += target.speed * right;
                         Window.infoPopup("The enemy moved away from you (" + Math.abs(player.pos - target.pos) + "ft)", options);

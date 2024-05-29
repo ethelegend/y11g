@@ -19,4 +19,7 @@ public class Entity {
     public Weapon[] weapons;
     public int pos;
     public int gold;
+    public boolean canMove(int target) {
+        return (Math.abs(this.pos - target) <= this.speed);
+    }
 }
