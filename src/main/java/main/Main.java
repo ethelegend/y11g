@@ -11,7 +11,7 @@ import org.json.simple.JSONObject;
 import java.util.ArrayList; // This is used once
 
 public class Main {
-    int currentRoom = 16;
+    int currentRoom = 0;
     int previousRoom; // Used for retreating from occupied rooms
     JSONArray rooms;
     boolean debug; // Shows room numbers by default if true
@@ -20,6 +20,15 @@ public class Main {
     public Main(JSONArray a){
         new Window(); // Initialises the JFrame
         rooms = a; // Initialises the JSONArray
+        JMenu quit = new JMenu("Quit");
+        quit.addActionListener(l -> {
+            JButton[] b = new JButton[]{new JButton("OK")};
+            b[0].addActionListener(m -> {
+                System.exit(0);
+            });
+            Window.infoPopup("You collected a total of " + player.gold + " gold!", b);
+        });
+        Window.window.add(quit);
         newRoom();
     }
     public void newRoom() {

@@ -14,7 +14,7 @@ public class Window { // Dedicated class to contain static JFrame and default la
         window = new JFrame();
         window.setVisible(true);
         window.toFront();
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
     public static void infoPopup(String labelText, JButton[] button){
         window.getContentPane().removeAll();

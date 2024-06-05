@@ -63,8 +63,7 @@
           "pos": -5,
           "gold": 7
         }
-      ],
-      "gold": 14
+      ]
     },
     {
       "width": 3,
@@ -134,8 +133,7 @@
       "monsters": [
         "Goblin",
         "Goblin"
-      ],
-      "gold": 240
+      ]
     },
     {
       "width": 3,

@@ -33,6 +33,7 @@ public class Attack {
             manualAttack(0);
         } else {
             if (entity == 0) { // Initialises the very expressive options for reacting to monster attacks
+                System.out.println(step);
                 options = new JButton[1];
                 options[0] = new JButton("OK");
                 options[0].addActionListener(l -> automaticAttack());
@@ -47,7 +48,7 @@ public class Attack {
         step++;
         switch (step) {
             case 1:
-                options = new JButton[2*roomRadius/5 + 1];
+                options = new JButton[2 * roomRadius / 5 + 1];
                 int p = -player.pos - roomRadius;
                 for (int i = 0; i < options.length; i++) {
                     // i is the index, p is the relative position
@@ -58,10 +59,10 @@ public class Attack {
                     } else {
                         options[i] = new JButton();
                     }
-                    p+=5;
+                    p += 5;
                 }
                 for (int i = 0; i < monsters.length; i++) {
-                    options[(monsters[i].pos + roomRadius)/5] = new JButton(monsters[i].name + " (" + monsters[i].hp + "/" + monsters[i].maxHP + ")");
+                    options[(monsters[i].pos + roomRadius) / 5] = new JButton(monsters[i].name + " (" + monsters[i].hp + "/" + monsters[i].maxHP + ")");
                 }
                 Window.infoPopup("Where will you move?", options);
                 break;
@@ -123,50 +124,35 @@ public class Attack {
                 options = new JButton[1];
                 options[0] = new JButton("OK");
                 if (o == 0) {
-                    options[0].addActionListener(l -> battle());
                     Window.infoPopup("Your attack missed", options);
                 } else {
-                    if (target.hp <= o) {
-                        target.hp = 0;
-                        options[0].addActionListener(l -> manualAttack(0));
-                    } else {
-                        target.hp -= o;
+                    if (target.hp > o) {
                         options[0].addActionListener(l -> battle());
-
-                    }
-                    Window.infoPopup("You dealt " + o + " damage (" + target.hp + "/" + target.maxHP + ")", options);
-
-                }
-                break;
-            case 5:
-                entity = -1; // IDK why i have to do this but i have to
-                int gold = -1;
-                if (monsters.length > 1) {
-                    Entity[] monstersTemp = new Entity[monsters.length - 1];
-                    for (int i = 0; i < monstersTemp.length; i++) {
-                        if (gold < 0 & monsters[i].hp == 0) {
-                            gold = monsters[i].hp;
-                        }
-                        if (gold >= 0) {
-                            monstersTemp[i] = monsters[i+1];
-                            monsters[i+1] = null;
+                        target.hp -= o;
+                    } else {
+                        target.hp = 0;
+                        player.gold += target.gold;
+                        if (monsters.length > 1) {
+                            options[0].addActionListener(l -> battle());
+                            Entity[] monstersTemp = new Entity[monsters.length - 1];
+                            for (int i = 0; i < monstersTemp.length; i++) {
+                                if (monsters[i] == null || monsters[i].hp == 0) {
+                                    monstersTemp[i] = monsters[i + 1];
+                                    monsters[i + 1] = null;
+                                } else {
+                                    monstersTemp[i] = monsters[i];
+                                }
+                            }
+                            monsters = monstersTemp;
                         } else {
-                            monstersTemp[i] = monsters[i];
+                            options[0].addActionListener(l -> origin.newRoom());
                         }
                     }
-                    monsters = monstersTemp;
-                    options[0].addActionListener(l -> battle());
-                    Window.infoPopup("You defeated the enemy" + ((gold > 0) ? " and earned " + gold + " gold" :""), options);
-                } else {
-                    gold = monsters[0].gold;
-                    options[0] = new JButton("OK");
-                    options[0].addActionListener(l -> origin.newRoom());
-                    Window.infoPopup("You defeated all enemies" + ((gold > 0) ? " and earned " + gold + " gold" :""), options);
+                    Window.infoPopup("You dealt " + o + " damage (" + target.hp + "/" + target.maxHP + ((target.hp == 0 && target.gold > 0) ? ") and earned " + target.gold + "gold" : ")"), options);
+
                 }
-                player.gold += gold;
                 break;
         }
-
     }
     public void automaticAttack() {
         step++;
@@ -180,6 +166,7 @@ public class Attack {
                 if (target.maxHP / target.hp < 2) { // I have to do it this way or cast them to floats
                     // The enemy is moving towards you
                     if (target.canMove(player.pos + 5 * right)) {
+                        System.out.println("why");
                         // The enemy is close enough to reach you
                         target.pos = player.pos + 5 * right;
                         Window.infoPopup(targetTitle + " moved next to you (5ft)", options);
@@ -220,7 +207,7 @@ public class Attack {
                 break;
             case 3:
                 if (player.hp > 0) { // If player is still alive
-                    Window.infoPopup("You are now at " + player.hp + " health", options);
+                    Window.infoPopup("You are at " + player.hp + " health", options);
                 } else { // If player is dead :(
                     options[0].addActionListener(l -> System.exit(0));
                     Window.infoPopup("You have passed out", options);
