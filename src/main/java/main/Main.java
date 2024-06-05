@@ -95,12 +95,9 @@ public class Main {
         JButton fight = new JButton("Fight");
         fight.addActionListener(l -> {
             room.remove("monsters");
-            battle(room, monsters);
+            new Attack(player, monsters, Math.max((int) ((long) room.get("width")), (int) ((long) room.get("height")))/2*5, this);
         });
         Window.infoPopup(text, new JButton[]{retreat, fight});
-    }
-    private void battle(JSONObject room, Entity[] monsters) {
-        new Attack(player, monsters, Math.max((int) ((long) room.get("width")), (int) ((long) room.get("height")))/2*5, this);
     }
     private void emptyRoom(JSONObject room) {
         Window.window.getContentPane().removeAll();

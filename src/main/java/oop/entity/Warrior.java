@@ -1,9 +1,8 @@
 package oop.entity;
 
 import main.Dice;
-import oop.weapon.DebugStick;
-import oop.weapon.Longbow;
-import oop.weapon.Longsword;
+import oop.weapon.Crossbow;
+import oop.weapon.Greatsword;
 import oop.weapon.Weapon;
 
 
@@ -12,11 +11,11 @@ public class Warrior extends Entity {
         this.name = "Warrior";
         this.ac = 18;
         this.speed = 30;
-        this.hp = Dice.rollDice(2,new int[]{8,8,8,8,8,8,8,8,8,8});
+        this.hp = 16; // Technically should be 4 + 2d10, but im using fixed hp so its not unfair
         this.maxHP = this.hp;
         this.weapons = new Weapon[]{
-                new Longsword(7,1),
-                new Longbow(7,1)
+                new Crossbow(4,2),
+                new Greatsword(5,3)
         };
     }
 }

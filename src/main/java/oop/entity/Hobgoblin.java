@@ -13,8 +13,8 @@ public class Hobgoblin extends Entity {
         this.hp = Dice.rollDice(2,new int[]{8,8});
         this.maxHP = this.hp;
         this.weapons = new Weapon[]{
-                new Longsword(4,1),
-                new Longbow(4,1)
+                new Longbow(3,1),
+                new Longsword(3,1)
         };
         this.pos = p;
         this.gold = g;

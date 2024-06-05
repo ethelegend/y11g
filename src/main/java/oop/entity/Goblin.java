@@ -13,8 +13,8 @@ public class Goblin extends Entity {
         this.hp = Dice.rollDice(0,new int[]{6,6});
         this.maxHP = this.hp;
         this.weapons = new Weapon[]{
-                new Scimitar(4,2),
-                new Shortbow(4,2)
+                new Shortbow(4,2),
+                new Scimitar(4,2)
         };
         this.pos = p;
         this.gold = g;
