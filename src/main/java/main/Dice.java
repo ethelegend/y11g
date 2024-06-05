@@ -6,19 +6,13 @@ public class Dice { // Simulates rolling dice
             result += (int) Math.floor(Math.random()*i+1);
         }
         return result;
-
     }
-    public static int rollWithAdvantage(int base, int[] dice, int advantage) {
-        boolean advantageDirection = (advantage > 0);
-        advantage = Math.abs(advantage);
-        int champion = (advantageDirection) ? 1 : 20;
-        while (advantage >= 0) {
-            int contender = rollDice(base,dice);
-            if (Boolean.logicalXor((champion > contender), advantageDirection)) {
-                champion = contender;
-            }
-            advantage--;
-        }
-        return champion;
+    public static int rollCheck(int base) {
+        int result = (int) Math.floor(Math.random()*20+1);
+        if (result == 1) {
+            return 0;
+        } if (result == 20) {
+            return 99;
+        } return result + base;
     }
 }

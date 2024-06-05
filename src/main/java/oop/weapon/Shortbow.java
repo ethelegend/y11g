@@ -2,7 +2,7 @@ package oop.weapon;
 
 public class Shortbow extends Weapon {
     public Shortbow(int hitBonus, int damageBonus) {
-        this.name = "shortbow";
+        this.name = "Shortbow";
         this.range = 80;
         this.hit = hitBonus;
         this.base = damageBonus;

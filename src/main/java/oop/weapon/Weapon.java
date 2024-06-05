@@ -11,7 +11,7 @@ public class Weapon {
         return (Math.abs(distance) <= this.range);
     }
     public int attack(int ac) {
-        return (ac > Dice.rollDice(this.hit, new int[]{20}))
+        return (ac > Dice.rollCheck(this.hit))
                 ? 0
                 : Dice.rollDice(this.base,this.dice);
     }
