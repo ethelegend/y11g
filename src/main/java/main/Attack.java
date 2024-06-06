@@ -2,11 +2,11 @@ package main;
 
 import oop.entity.Entity;
 import oop.weapon.Weapon;
+import util.Static;
 
-import javax.swing.JButton;
+import javax.swing.*;
 
 public class Attack {
-    Entity player;
     Entity target;
     String targetTitle;
     Entity[] monsters;
@@ -15,11 +15,10 @@ public class Attack {
     int step;
     JButton[] options;
     Main origin;
-    public Attack(Entity p, Entity[] m, int r, Main o) {
-        player = p; // The player object
+    public Attack(Entity[] m, int r, Main o) {
         monsters = m; // Array of monster objects
         roomRadius = r; // Radius of room (e.g. r = 10: {-10, -5, 0, 5, 10}
-        player.pos = -r; // The player enters the room
+        Static.player.pos = -r; // The player enters the room
         entity = monsters.length - 1; // An index for which entity is moving, monsters.length -> player, < monsters.length -> monsters[entity]. Shifted down by one because it is incremented every time battle() is called
         origin = o;
         battle(); // we love recursion
@@ -49,10 +48,10 @@ public class Attack {
         switch (step) {
             case 1:
                 options = new JButton[2 * roomRadius / 5 + 1];
-                int p = -player.pos - roomRadius;
+                int p = -Static.player.pos - roomRadius;
                 for (int i = 0; i < options.length; i++) {
                     // i is the index, p is the relative position
-                    if (player.canMove(p)) {
+                    if (Static.player.canMove(p)) {
                         options[i] = new JButton(Math.abs(p) + "ft");
                         final int f = p;
                         options[i].addActionListener(l -> manualAttack(f));
@@ -64,13 +63,13 @@ public class Attack {
                 for (int i = 0; i < monsters.length; i++) {
                     options[(monsters[i].pos + roomRadius) / 5] = new JButton(monsters[i].name + " (" + monsters[i].hp + "/" + monsters[i].maxHP + ")");
                 }
-                Window.infoPopup("Where will you move?", options);
+                Static.infoPopup("Where will you move?", options);
                 break;
             case 2: // Choosing which enemy to attack, fairly self-explanatory
-                player.pos += o;
+                Static.player.pos += o;
                 options = new JButton[monsters.length];
                 Weapon maxRange = null;
-                for (Weapon w : player.weapons) {
+                for (Weapon w : Static.player.weapons) {
                     if (maxRange == null || w.range > maxRange.range) {
                         maxRange = w;
                     }
@@ -80,7 +79,7 @@ public class Attack {
                     assert maxRange != null;
                     if (maxRange.canAttack(monsters[i].pos)) {
                         canAttack = true;
-                        options[i] = new JButton(monsters[i].name + " (" + monsters[i].hp + "/" + monsters[i].maxHP + ", " + Math.abs(player.pos - monsters[i].pos) + "ft)");
+                        options[i] = new JButton(monsters[i].name + " (" + monsters[i].hp + "/" + monsters[i].maxHP + ", " + Math.abs(Static.player.pos - monsters[i].pos) + "ft)");
                         final int f = i; // must be final or semi-final
                         options[i].addActionListener(l -> manualAttack(f));
                     } else {
@@ -88,50 +87,51 @@ public class Attack {
                     }
                 }
                 if (canAttack) {
-                    Window.infoPopup("Which enemy will you attack?", options);
+                    Static.infoPopup("Which enemy will you attack?", options);
                 } else {
                     options = new JButton[1];
                     options[0] = new JButton("OK");
                     options[0].addActionListener(l -> battle());
-                    Window.infoPopup("You are too far away to attack", options);
+                    Static.infoPopup("You are too far away to attack", options);
                 }
 
                 break;
             case 3:
                 target = monsters[o];
-                options = new JButton[player.weapons.length];
+                options = new JButton[Static.player.weapons.length];
                 canAttack = false;
                 for (int i = 0; i < options.length; i++) {
-                    if (player.weapons[i].canAttack(player.pos - target.pos)) {
+                    if (Static.player.weapons[i].canAttack(Static.player.pos - target.pos)) {
                         canAttack = true;
-                        options[i] = new JButton(player.weapons[i].name);
+                        options[i] = new JButton(Static.player.weapons[i].name);
                         final int f = i; // must be final or semi-final
-                        options[i].addActionListener(l -> manualAttack(player.weapons[f].attack(target.ac)));
+                        options[i].addActionListener(l -> manualAttack(Static.player.weapons[f].attack(target.ac)));
                     } else {
-                        options[i] = new JButton(player.weapons[i].name + " (Too far away)");
+                        options[i] = new JButton(Static.player.weapons[i].name + " (Too far away)");
                     }
                 }
                 if (canAttack) {
-                    Window.infoPopup("What weapon will you use?", options);
+                    Static.infoPopup("What weapon will you use?", options);
                 } else {
                     options = new JButton[1];
                     options[0] = new JButton("OK");
                     options[0].addActionListener(l -> battle());
-                    Window.infoPopup("You are too far away to attack", options);
+                    Static.infoPopup("You are too far away to attack", options);
                 }
                 break;
             case 4:
                 options = new JButton[1];
                 options[0] = new JButton("OK");
                 if (o == 0) {
-                    Window.infoPopup("Your attack missed", options);
+                    Static.infoPopup("Your attack missed", options);
+                    options[0].addActionListener(l -> battle());
                 } else {
                     if (target.hp > o) {
                         options[0].addActionListener(l -> battle());
                         target.hp -= o;
                     } else {
                         target.hp = 0;
-                        player.gold += target.gold;
+                        Static.player.gold += target.gold;
                         if (monsters.length > 1) {
                             options[0].addActionListener(l -> battle());
                             Entity[] monstersTemp = new Entity[monsters.length - 1];
@@ -148,7 +148,7 @@ public class Attack {
                             options[0].addActionListener(l -> origin.newRoom());
                         }
                     }
-                    Window.infoPopup("You dealt " + o + " damage (" + target.hp + "/" + target.maxHP + ((target.hp == 0 && target.gold > 0) ? ") and earned " + target.gold + "gold" : ")"), options);
+                    Static.infoPopup("You dealt " + o + " damage (" + target.hp + "/" + target.maxHP + ((target.hp == 0 && target.gold > 0) ? ") and earned " + target.gold + "gold" : ")"), options);
 
                 }
                 break;
@@ -162,56 +162,56 @@ public class Attack {
                     The enemies are programmed to advance towards their target, and retreat when at or under half health.
                     The other parts of the code is about if they are close to a wall or their target, in which case they should be stopped.
                 */
-                int right = (target.pos > player.pos) ? 1 : -1;
+                int right = (target.pos > Static.player.pos) ? 1 : -1;
                 if (target.maxHP / target.hp < 2) { // I have to do it this way or cast them to floats
                     // The enemy is moving towards you
-                    if (target.canMove(player.pos + 5 * right)) {
+                    if (target.canMove(Static.player.pos + 5 * right)) {
                         System.out.println("why");
                         // The enemy is close enough to reach you
-                        target.pos = player.pos + 5 * right;
-                        Window.infoPopup(targetTitle + " moved next to you (5ft)", options);
+                        target.pos = Static.player.pos + 5 * right;
+                        Static.infoPopup(targetTitle + " moved next to you (5ft)", options);
                     } else {
                         // The enemy is too far away to reach you
                         target.pos -= target.speed * right;
-                        Window.infoPopup(targetTitle + " moved towards you (" + Math.abs(player.pos - target.pos) + "ft)", options);
+                        Static.infoPopup(targetTitle + " moved towards you (" + Math.abs(Static.player.pos - target.pos) + "ft)", options);
                     }
                 } else {
                     // The enemy is retreating
                     if (target.canMove(roomRadius * right)) {
                         // The enemy is backed into a corner
                         target.pos = roomRadius * right;
-                        Window.infoPopup(targetTitle + " moved against the wall (" + Math.abs(player.pos - target.pos) + "ft)", options);
+                        Static.infoPopup(targetTitle + " moved against the wall (" + Math.abs(Static.player.pos - target.pos) + "ft)", options);
                     } else {
                         // The enemy has space to retreat
                         target.pos += target.speed * right;
-                        Window.infoPopup(targetTitle + " moved away from you (" + Math.abs(player.pos - target.pos) + "ft)", options);
+                        Static.infoPopup(targetTitle + " moved away from you (" + Math.abs(Static.player.pos - target.pos) + "ft)", options);
                     }
                 }
                 break;
             case 2:
                  Weapon chosen = null;
                 for (Weapon w : target.weapons) {
-                    if (w.canAttack(target.pos - player.pos)) {
+                    if (w.canAttack(target.pos - Static.player.pos)) {
                         chosen = w;
                     } else {
                         break;
                     }
                 }
                 if (chosen == null) {
-                    Window.infoPopup(targetTitle + " was too far away to attack", options);
+                    Static.infoPopup(targetTitle + " was too far away to attack", options);
                 } else {
-                    int damage = chosen.attack(player.ac);
-                    player.hp -= damage;
-                    Window.infoPopup(targetTitle + " attacked with their " + chosen.name + " and " + ((damage == 0) ? "missed" : "dealt " + damage + " damage"), options);
+                    int damage = chosen.attack(Static.player.ac);
+                    Static.player.hp -= damage;
+                    Static.infoPopup(targetTitle + " attacked with their " + chosen.name + " and " + ((damage == 0) ? "missed" : "dealt " + damage + " damage"), options);
                 }
                 break;
             case 3:
-                if (player.hp > 0) { // If player is still alive
-                    Window.infoPopup("You are at " + player.hp + " health", options);
+                if (Static.player.hp > 0) { // If player is still alive
+                    Static.infoPopup("You are at " + Static.player.hp + " health", options);
                 } else { // If player is dead :(
-                    options[0].addActionListener(l -> System.exit(0));
-                    Window.infoPopup("You have passed out", options);
-
+                    Static.window.removeAll();
+                    Static.window.add(new JLabel("You have passed out"));
+                    Static.window.setSize(100,100);
                 }
                 break;
             case 4:

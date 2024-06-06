@@ -1,4 +1,4 @@
-package init;
+package util;
 
 import main.Main; // The actual main class
 // Types of JSON objects
@@ -15,7 +15,7 @@ public class Initialiser { // Houses the executable class and parses the room fi
         JSONArray rooms = new JSONArray();
         try {
             rooms = (JSONArray) ((JSONObject) parser.parse(new FileReader("src/main/resources/rooms.json"))).get("rooms"); // These kinds of type casting are quite common
-        }catch (IOException e) { // The JSON file could not be found
+        } catch (IOException e) { // The JSON file could not be found
             System.err.println("Unable to find level data");
             System.exit(1);
         } catch (ParseException e) { // The JSON file could not be read

@@ -300,12 +300,12 @@
       "monsters": [
         {
           "type": "Goblin",
-          "pos": 5,
+          "pos": -5,
           "gold": 0
         },
         {
           "type": "Goblin",
-          "pos": -5,
+          "pos": 5,
           "gold": 0
         }
       ]
@@ -331,22 +331,41 @@
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 3,
+      "height": 7,
       "explored": false,
       "exits": [
         {
           "x": 0,
           "y": 0,
-          "to": 1,
+          "to": 8,
           "label": "^"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "to": 11,
+          "label": "<"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "to": 21,
+          "label": "<"
         }
       ],
       "monsters": [
-        "Goblin",
-        "Goblin"
-      ],
-      "gold": 200
+        {
+          "type": "Goblin",
+          "pos": 0,
+          "gold": 100
+        },
+        {
+          "type": "Goblin",
+          "pos": 5,
+          "gold": 100
+        }
+      ]
     },
     {
       "width": 1,

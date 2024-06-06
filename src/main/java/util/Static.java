@@ -1,21 +1,20 @@
-package main;
+package util;
+
+import oop.entity.Entity;
+import oop.entity.Warrior;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import java.awt.GridLayout;
 
-public class Window { // Dedicated class to contain static JFrame and default layout
-    public static JFrame window;
-
-    public Window() {
-        window = new JFrame();
-        window.setVisible(true);
-        window.toFront();
-        window.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-    }
+public class Static { // Dedicated class to contain static window and player objects
+    public static JFrame window = new JFrame();
+    public static JMenuBar quit = new JMenuBar();
+    public static Entity player = new Warrior();
     public static void infoPopup(String labelText, JButton[] button){
         window.getContentPane().removeAll();
         window.add(new JLabel(labelText,SwingConstants.CENTER));
@@ -30,6 +29,7 @@ public class Window { // Dedicated class to contain static JFrame and default la
 
         window.setLayout(new GridLayout(2,1));
         window.setSize((int) window.getPreferredSize().getWidth() + 10, 200);
+        window.setJMenuBar(quit);
         window.revalidate();
         window.repaint();
     }

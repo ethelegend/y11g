@@ -1,5 +1,5 @@
 package oop.weapon;
-import main.Dice;
+import util.Dice;
 
 public class Weapon {
     public String name;

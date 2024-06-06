@@ -7,6 +7,7 @@ import oop.entity.*; // Entity classes
 // JSON objects
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import util.Static;
 
 import java.util.ArrayList; // This is used once
 
@@ -15,20 +16,19 @@ public class Main {
     int previousRoom; // Used for retreating from occupied rooms
     JSONArray rooms;
     boolean debug; // Shows room numbers by default if true
-    Entity player = new Warrior();
     final int monsterTypes = 4; // Should probably replace this with an enum or something
     public Main(JSONArray a){
-        new Window(); // Initialises the JFrame
-        rooms = a; // Initialises the JSONArray
-        JMenu quit = new JMenu("Quit");
+        Static.window.setVisible(true);
+        Static.window.toFront();
+        Static.window.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        JMenuItem quit = new JMenuItem("Quit");
         quit.addActionListener(l -> {
             JButton[] b = new JButton[]{new JButton("OK")};
-            b[0].addActionListener(m -> {
-                System.exit(0);
-            });
-            Window.infoPopup("You collected a total of " + player.gold + " gold!", b);
+            b[0].addActionListener(m -> System.exit(0));
+            Static.infoPopup("You collected a total of " + Static.player.gold + " gold!", b);
         });
-        Window.window.add(quit);
+        Static.quit.add(quit);
+        rooms = a; // Initialises the JSONArray
         newRoom();
     }
     public void newRoom() {
@@ -82,7 +82,6 @@ public class Main {
             for (int i = 0; i < monsterList.size(); i++) {
                 String s = monsterCount[i] + " " + monsterList.get(i) + ((monsterCount[i] == 1) ? " " : "s "); // "2" + " " + "Goblin" + "s "
                 text = text.concat(s);
-                System.out.println(text);
 
                 if (monsterCount[i+1] == 0) {
                     text = text.concat("in this room.");
@@ -104,15 +103,15 @@ public class Main {
         JButton fight = new JButton("Fight");
         fight.addActionListener(l -> {
             room.remove("monsters");
-            new Attack(player, monsters, Math.max((int) ((long) room.get("width")), (int) ((long) room.get("height")))/2*5, this);
+            new Attack(monsters, Math.max((int) ((long) room.get("width")), (int) ((long) room.get("height")))/2*5, this);
         });
-        Window.infoPopup(text, new JButton[]{retreat, fight});
+        Static.infoPopup(text, new JButton[]{retreat, fight});
     }
     private void emptyRoom(JSONObject room) {
-        Window.window.getContentPane().removeAll();
-        boolean explored = (boolean) room.put("explored", true); // It does what I need it to, even if it is cursed
+        Static.window.getContentPane().removeAll();
+        boolean explored = (boolean) room.put("explored", true); // It does what I need it to, even if intellij doesnt like it
         // Sets the title of the room
-        Window.window.setTitle((room.containsKey("title"))
+        Static.window.setTitle((room.containsKey("title"))
                 ? (String) room.get("title")
                 : ((debug || explored)
                 ? Integer.toString(currentRoom)
@@ -125,7 +124,7 @@ public class Main {
         for (int i = 0; i < height; i++) { // Initialises each JButton and adds it to the JFrame
             for (int j = 0; j < width; j++) {
                 tile[j][i] = new JButton();
-                Window.window.add(tile[j][i]);
+                Static.window.add(tile[j][i]);
             }
         }
         JSONArray exits = (JSONArray) room.get("exits"); // Gets all the exits
@@ -151,11 +150,12 @@ public class Main {
             });
         }
 
-        Window.window.setLayout(new GridLayout(height,width)); // Makes each button's position on the screen equivalent to its indices
-        Window.window.setSize(width*100, height*100); // Each button is 100px*100px
+        Static.window.setLayout(new GridLayout(height,width)); // Makes each button's position on the screen equivalent to its indices
+        Static.window.setSize(width*100, height*100); // Each button is 100px*100px
+        Static.window.setJMenuBar(Static.quit);
         // The magic functions that make sure it renders correctly
-        Window.window.revalidate();
-        Window.window.repaint();
+        Static.window.revalidate();
+        Static.window.repaint();
 
     }
 }

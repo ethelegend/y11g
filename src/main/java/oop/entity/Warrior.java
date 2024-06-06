@@ -1,6 +1,5 @@
 package oop.entity;
 
-import main.Dice;
 import oop.weapon.Crossbow;
 import oop.weapon.Greatsword;
 import oop.weapon.Weapon;

@@ -1,5 +1,5 @@
 package oop.entity;
-import main.Dice;
+import util.Dice;
 import oop.weapon.Weapon;
 import oop.weapon.Longsword;
 import oop.weapon.Longbow;

@@ -1,4 +1,4 @@
-package main;
+package util;
 public class Dice { // Simulates rolling dice
     public static int rollDice(int base, int[] dice) {
         int result = base;
