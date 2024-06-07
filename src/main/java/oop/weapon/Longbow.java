@@ -6,6 +6,6 @@ public class Longbow extends Weapon {
         this.range = 150;
         this.hit = hitBonus;
         this.base = damageBonus;
-        this.dice = new int[]{8};
+        this.dice = new int[]{8}; // 1d8
     }
 }

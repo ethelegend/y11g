@@ -84,7 +84,11 @@
         }
       ],
       "monsters": [
-        "Hobgoblin"
+        {
+          "type": "Hobgoblin",
+          "pos": 0,
+          "gold": 0
+        }
       ]
     },
     {
@@ -131,8 +135,16 @@
         }
       ],
       "monsters": [
-        "Goblin",
-        "Goblin"
+        {
+          "type": "Goblin",
+          "pos": 0,
+          "gold": 0
+        },
+        {
+          "type": "Goblin",
+          "pos": 5,
+          "gold": 0
+        }
       ]
     },
     {
@@ -218,70 +230,164 @@
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 3,
+      "height": 3,
       "explored": false,
       "exits": [
         {
           "x": 0,
           "y": 0,
-          "to": 1,
+          "to": 5,
+          "label": "<"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "to": 6,
           "label": "^"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "to": 16,
+          "label": "<"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "to": 11,
+          "label": ">"
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 7,
+      "height": 7,
       "explored": false,
       "exits": [
         {
-          "x": 0,
+          "x": 6,
           "y": 0,
-          "to": 1,
-          "label": "^"
+          "to": 8,
+          "label": ">"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "to": 10,
+          "label": "<"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "to": 16,
+          "label": "<"
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "to": 17,
+          "label": ">"
         }
       ],
       "monsters": [
-        "Goblin"
-      ]
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
         {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
+          "type": "Goblin",
+          "pos": 0,
+          "gold": 0
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 5,
+      "height": 7,
       "explored": false,
       "exits": [
         {
           "x": 0,
           "y": 0,
-          "to": 1,
+          "to": 2,
           "label": "^"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "to": 3,
+          "label": "^"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "to": 18,
+          "label": ">"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "to": 65,
+          "label": "<"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "to": 23,
+          "label": "v"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "to": 24,
+          "label": "v"
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 5,
+      "height": 5,
       "explored": false,
       "exits": [
         {
-          "x": 0,
+          "x": 4,
           "y": 0,
-          "to": 1,
+          "to": 4,
           "label": "^"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "to": 14,
+          "label": "v"
+        }
+      ]
+    },
+    {
+      "width": 5,
+      "height": 7,
+      "explored": false,
+      "exits": [
+        {
+          "x": 4,
+          "y": 4,
+          "to": 16,
+          "label": ">"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "to": 13,
+          "label": "<"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "to": 25,
+          "label": "v"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "to": 20,
+          "label": ">"
         }
       ]
     },
@@ -291,10 +397,22 @@
       "explored": false,
       "exits": [
         {
+          "x": 2,
+          "y": 0,
+          "to": 65,
+          "label": ">"
+        },
+        {
           "x": 0,
           "y": 2,
           "to": 1,
           "label": "<"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "to": 22,
+          "label": "v"
         }
       ],
       "monsters": [
@@ -318,8 +436,26 @@
         {
           "x": 0,
           "y": 0,
-          "to": 1,
+          "to": 10,
           "label": "^"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "to": 11,
+          "label": ">"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "to": 14,
+          "label": "<"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "to": 20,
+          "label": "v"
         }
       ],
       "monsters": [
@@ -368,676 +504,1263 @@
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 3,
+      "height": 5,
       "explored": false,
       "exits": [
         {
           "x": 0,
           "y": 0,
-          "to": 1,
-          "label": "^"
+          "to": 12,
+          "label": "<"
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "to": 26,
+          "label": "v"
         }
       ],
       "monsters": [
-        "Goblin",
-        "Wolf"
-      ],
-      "gold": 490
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
         {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
+          "type": "Goblin",
+          "pos": 0,
+          "gold": 245
+        },
+        {
+          "type": "Wolf",
+          "pos": -5,
+          "gold": 245
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 3,
+      "height": 5,
       "explored": false,
       "exits": [
         {
           "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
+          "y": 4,
+          "to": 29,
+          "label": "v"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "to": 25,
+          "label": ">"
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 5,
+      "height": 7,
       "explored": false,
       "exits": [
         {
           "x": 0,
           "y": 0,
-          "to": 1,
+          "to": 14,
+          "label": "<"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "to": 16,
           "label": "^"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "to": 21,
+          "label": ">"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "to": 25,
+          "label": "<"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "to": 30,
+          "label": "<"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "to": 27,
+          "label": ">"
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 7,
+      "height": 3,
       "explored": false,
       "exits": [
         {
           "x": 0,
           "y": 0,
-          "to": 1,
-          "label": "^"
-        }
-      ],
-      "monsters": [
-        "Hobgoblin"
-      ]
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
+          "to": 20,
+          "label": "<"
+        },
         {
-          "x": 0,
+          "x": 6,
           "y": 0,
-          "to": 1,
-          "label": "^"
+          "to": 17,
+          "label": ">"
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 3,
+      "height": 7,
       "explored": false,
       "exits": [
         {
-          "x": 0,
+          "x": 2,
           "y": 0,
-          "to": 1,
+          "to": 15,
           "label": "^"
-        }
-      ]
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
+        },
         {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
-        }
-      ],
-      "monsters": [
-        "Hobgoblin"
-      ]
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
-        {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
+          "x": 2,
+          "y": 6,
+          "to": 23,
+          "label": ">"
         }
       ],
       "monsters": [
-        "Hobgoblin"
-      ],
-      "gold": 180
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
         {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
-        }
-      ],
-      "monsters": [
-        "Hobgoblin"
-      ]
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
-        {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
-        }
-      ],
-      "monsters": [
-        "Goblin"
-      ],
-      "gold": 145
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
-        {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
-        }
-      ],
-      "monsters": [
-        "Hobgoblin"
-      ]
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
-        {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
-        }
-      ],
-      "monsters": [
-        "Hobgoblin"
-      ]
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
-        {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
+          "type": "Hobgoblin",
+          "pos": 0,
+          "gold": 0
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 5,
+      "height": 7,
       "explored": false,
       "exits": [
         {
-          "x": 0,
+          "x": 2,
           "y": 0,
-          "to": 1,
+          "to": 65,
           "label": "^"
-        }
-      ],
-      "monsters": [
-        "Goblin",
-        "Goblin"
-      ],
-      "gold": 8
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "to": 12,
+          "label": "^"
+        },
         {
           "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
+          "y": 6,
+          "to": 22,
+          "label": "<"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "to": 34,
+          "label": "v"
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 3,
+      "height": 7,
       "explored": false,
       "exits": [
         {
-          "x": 0,
+          "x": 2,
           "y": 0,
-          "to": 1,
+          "to": 12,
           "label": "^"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "to": 34,
+          "label": "v"
+        }
+      ]
+    },
+    {
+      "width": 7,
+      "height": 3,
+      "explored": false,
+      "exits": [
+        {
+          "x": 4,
+          "y": 0,
+          "to": 14,
+          "label": "^"
+        },
+        {
+          "x": 6,
+          "y": 0,
+          "to": 20,
+          "label": ">"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "to": 19,
+          "label": "<"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "to": 29,
+          "label": "v"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "to": 30,
+          "label": "v"
         }
       ],
       "monsters": [
-        "Hobgoblin"
+        {
+          "type": "Hobgoblin",
+          "pos": 0,
+          "gold": 0
+        }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 3,
+      "height": 3,
       "explored": false,
       "exits": [
         {
-          "x": 0,
+          "x": 2,
           "y": 0,
-          "to": 1,
+          "to": 18,
           "label": "^"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "to": 31,
+          "label": "v"
         }
       ],
       "monsters": [
-        "Hobgoblin"
-      ],
-      "gold": 175
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
         {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
+          "type": "Hobgoblin",
+          "pos": 0,
+          "gold": 180
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 7,
+      "height": 7,
       "explored": false,
       "exits": [
         {
           "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
-        }
-      ],
-      "monsters": [
-        "Hobgoblin"
-      ],
-      "gold": 140
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
+          "y": 2,
+          "to": 20,
+          "label": "<"
+        },
         {
           "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
-        }
-      ]
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
+          "y": 6,
+          "to": 39,
+          "label": "v"
+        },
         {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
-        }
-      ]
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
-        {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
-        }
-      ]
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
-        {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
+          "x": 6,
+          "y": 6,
+          "to": 32,
+          "label": ">"
         }
       ],
       "monsters": [
-        "Goblin",
-        "Giant Rat",
-        "Giant Rat"
-      ],
-      "gold": 8
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
         {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
+          "type": "Hobgoblin",
+          "pos": 0,
+          "gold": 0
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 3,
+      "height": 3,
       "explored": false,
       "exits": [
         {
-          "x": 0,
+          "x": 2,
           "y": 0,
-          "to": 1,
-          "label": "^"
-        }
-      ]
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
+          "to": 8,
+          "label": ">"
+        },
         {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
+          "x": 2,
+          "y": 2,
+          "to": 32,
+          "label": ">"
         }
       ],
       "monsters": [
-        "Hobgoblin"
-      ]
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
         {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
+          "type": "Goblin",
+          "pos": 0,
+          "gold": 145
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 5,
+      "height": 3,
       "explored": false,
       "exits": [
         {
           "x": 0,
           "y": 0,
-          "to": 1,
+          "to": 19,
           "label": "^"
-        }
-      ]
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "to": 25,
+          "label": "^"
+        },
         {
           "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
+          "y": 2,
+          "to": 37,
+          "label": "v"
         }
       ],
       "monsters": [
-        "Goblin"
-      ]
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
         {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
+          "type": "Hobgoblin",
+          "pos": 0,
+          "gold": 0
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 5,
+      "height": 5,
       "explored": false,
       "exits": [
         {
-          "x": 0,
+          "x": 2,
           "y": 0,
-          "to": 1,
+          "to": 25,
           "label": "^"
-        }
-      ]
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
+        },
         {
-          "x": 0,
+          "x": 4,
           "y": 0,
-          "to": 1,
-          "label": "^"
+          "to": 20,
+          "label": ">"
         }
       ],
       "monsters": [
-        "Goblin",
-        "Wolf"
-      ],
-      "gold": 250
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
         {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
+          "type": "Hobgoblin",
+          "pos": 0,
+          "gold": 0
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 3,
+      "height": 3,
       "explored": false,
       "exits": [
         {
-          "x": 0,
+          "x": 2,
           "y": 0,
-          "to": 1,
+          "to": 26,
           "label": "^"
-        }
-      ],
-      "monsters": [
-        "Hobgoblin"
-      ]
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
+        },
         {
           "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
+          "y": 2,
+          "to": 34,
+          "label": "<"
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 3,
+      "height": 5,
       "explored": false,
       "exits": [
         {
           "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
+          "y": 2,
+          "to": 27,
+          "label": "<"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "to": 28,
+          "label": ">"
         }
       ],
       "monsters": [
-        "Goblin"
-      ],
-      "gold": 16
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
         {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
+          "type": "Goblin",
+          "pos": 0,
+          "gold": 4
+        },
+        {
+          "type": "Goblin",
+          "pos": 0,
+          "gold": 4
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 3,
+      "height": 5,
       "explored": false,
       "exits": [
         {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
+          "x": 2,
+          "y": 4,
+          "to": 44,
+          "label": "v"
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 7,
+      "height": 7,
       "explored": false,
       "exits": [
         {
-          "x": 0,
+          "x": 2,
           "y": 0,
-          "to": 1,
+          "to": 23,
           "label": "^"
-        }
-      ],
-      "monsters": [
-        "Hobgoblin"
-      ],
-      "gold": 580
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
+        },
+        {
+          "x": 6,
+          "y": 0,
+          "to": 24,
+          "label": "^"
+        },
+        {
+          "x": 6,
+          "y": 1,
+          "to": 31,
+          "label": ">"
+        },
         {
           "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
-        }
-      ]
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
+          "y": 6,
+          "to": 44,
+          "label": "v"
+        },
         {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
-        }
-      ]
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
+          "x": 4,
+          "y": 6,
+          "to": 45,
+          "label": "v"
+        },
         {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
+          "x": 6,
+          "y": 6,
+          "to": 36,
+          "label": ">"
         }
       ],
       "monsters": [
-        "Hobgoblin"
+        {
+          "type": "Hobgoblin",
+          "pos": 0,
+          "gold": 0
+        }
+      ]
+    },
+    {
+      "width": 3,
+      "height": 5,
+      "explored": false,
+      "exits": [
+        {
+          "x": 2,
+          "y": 0,
+          "to": 39,
+          "label": ">"
+        }
       ],
-      "gold": 10
-    },
-    {
-      "width": 1,
-      "height": 1,
-      "explored": false,
-      "exits": [
+      "monsters": [
         {
-          "x": 0,
-          "y": 0,
-          "to": 1,
-          "label": "^"
+          "type": "Hobgoblin",
+          "pos": 0,
+          "gold": 175
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 3,
+      "height": 5,
       "explored": false,
       "exits": [
         {
-          "x": 0,
+          "x": 2,
           "y": 0,
-          "to": 1,
-          "label": "^"
+          "to": 37,
+          "label": ">"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "to": 34,
+          "label": "<"
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "to": 42,
+          "label": ">"
         }
       ]
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 5,
+      "height": 3,
       "explored": false,
       "exits": [
         {
           "x": 0,
           "y": 0,
-          "to": 1,
+          "to": 36,
+          "label": "<"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "to": 29,
           "label": "^"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "to": 38,
+          "label": ">"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "to": 42,
+          "label": "v"
+        }
+      ],
+      "monsters": [
+        {
+          "type": "Hobgoblin",
+          "pos": 0,
+          "gold": 140
+        }
+      ]
+    },
+    {
+      "width": 3,
+      "height": 3,
+      "explored": false,
+      "exits": [
+        {
+          "x": 0,
+          "y": 0,
+          "to": 37,
+          "label": "<"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "to": 43,
+          "label": "v"
+        }
+      ]
+    },
+    {
+      "width": 5,
+      "height": 5,
+      "explored": false,
+      "exits": [
+        {
+          "x": 0,
+          "y": 0,
+          "to": 35,
+          "label": "^"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "to": 27,
+          "label": "^"
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "to": 46,
+          "label": "v"
+        }
+      ]
+    },
+    {
+      "width": 3,
+      "height": 7,
+      "explored": false,
+      "exits": [
+        {
+          "x": 2,
+          "y": 2,
+          "to": 41,
+          "label": ">"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "to": 47,
+          "label": ">"
+        }
+      ]
+    },
+    {
+      "width": 5,
+      "height": 3,
+      "explored": false,
+      "exits": [
+        {
+          "x": 0,
+          "y": 0,
+          "to": 40,
+          "label": "<"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "to": 66,
+          "label": "v"
+        }
+      ],
+      "monsters": [
+        {
+          "type": "Goblin",
+          "pos": 0,
+          "gold": 4
+        },
+        {
+          "type": "Giant Rat",
+          "pos": -5,
+          "gold": 2
+        },
+        {
+          "type": "Giant Rat",
+          "pos": 5,
+          "gold": 2
+        }
+      ]
+    },
+    {
+      "width": 5,
+      "height": 5,
+      "explored": false,
+      "exits": [
+        {
+          "x": 0,
+          "y": 0,
+          "to": 36,
+          "label": "<"
+        },
+        {
+          "x": 6,
+          "y": 0,
+          "to": 37,
+          "label": "^"
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "to": 49,
+          "label": "v"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "to": 43,
+          "label": ">"
+        }
+      ]
+    },
+    {
+      "width": 6,
+      "height": 6,
+      "explored": false,
+      "exits": [
+        {
+          "x": 0,
+          "y": 0,
+          "to": 38,
+          "label": "^"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "to": 42,
+          "label": "<"
+        },
+        {
+          "x": 6,
+          "y": 4,
+          "to": 46,
+          "label": ">"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "to": 50,
+          "label": "v"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "to": 51,
+          "label": "v"
+        }
+      ]
+    },
+    {
+      "width": 5,
+      "height": 7,
+      "explored": false,
+      "exits": [
+        {
+          "x": 2,
+          "y": 0,
+          "to": 34,
+          "label": "^"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "to": 33,
+          "label": "<"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "to": 54,
+          "label": "v"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "to": 45,
+          "label": ">"
+        }
+      ],
+      "monsters": [
+        {
+          "type": "Hobgoblin",
+          "pos": 0,
+          "gold": 0
+        }
+      ]
+    },
+    {
+      "width": 3,
+      "height": 7,
+      "explored": false,
+      "exits": [
+        {
+          "x": 0,
+          "y": 0,
+          "to": 34,
+          "label": "^"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "to": 45,
+          "label": ">"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "to": 44,
+          "label": "<"
+        }
+      ]
+    },
+    {
+      "width": 7,
+      "height": 5,
+      "explored": false,
+      "exits": [
+        {
+          "x": 6,
+          "y": 0,
+          "to": 39,
+          "label": "^"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "to": 43,
+          "label": "<"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "to": 51,
+          "label": "v"
+        }
+      ]
+    },
+    {
+      "width": 3,
+      "height": 7,
+      "explored": false,
+      "exits": [
+        {
+          "x": 0,
+          "y": 0,
+          "to": 40,
+          "label": "<"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "to": 66,
+          "label": ">"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "to": 48,
+          "label": "<"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "to": 53,
+          "label": "<"
+        }
+      ],
+      "monsters": [
+        {
+          "type": "Goblin",
+          "pos": 0,
+          "gold": 0
+        }
+      ]
+    },
+    {
+      "width": 5,
+      "height": 3,
+      "explored": false,
+      "exits": [
+        {
+          "x": 4,
+          "y": 0,
+          "to": 47,
+          "label": ">"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "to": 53,
+          "label": "v"
+        }
+      ]
+    },
+    {
+      "width": 7,
+      "height": 7,
+      "explored": false,
+      "exits": [
+        {
+          "x": 0,
+          "y": 0,
+          "to": 45,
+          "label": "<"
+        },
+        {
+          "x": 6,
+          "y": 0,
+          "to": 42,
+          "label": "^"
+        },
+        {
+          "x": 6,
+          "y": 0,
+          "to": 56,
+          "label": "<"
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "to": 50,
+          "label": ">"
+        }
+      ]
+    },
+    {
+      "width": 2,
+      "height": 2,
+      "explored": false,
+      "exits": [
+        {
+          "x": 2,
+          "y": 0,
+          "to": 43,
+          "label": "^"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "to": 49,
+          "label": "v"
+        }
+      ],
+      "monsters": [
+        {
+          "type": "Goblin",
+          "pos": 0,
+          "gold": 125
+        },
+        {
+          "type": "Wolf",
+          "pos": 5,
+          "gold": 125
+        }
+      ]
+    },
+    {
+      "width": 7,
+      "height": 7,
+      "explored": false,
+      "exits": [
+        {
+          "x": 0,
+          "y": 0,
+          "to": 43,
+          "label": "^"
+        },
+        {
+          "x": 6,
+          "y": 0,
+          "to": 46,
+          "label": "^"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "to": 60,
+          "label": "v"
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "to": 61,
+          "label": "v"
+        }
+      ]
+    },
+    {
+      "width": 3,
+      "height": 7,
+      "explored": false,
+      "exits": [
+        {
+          "x": 2,
+          "y": 5,
+          "to": 53,
+          "label": ">"
+        }
+      ],
+      "monsters": [
+        {
+          "type": "Hobgoblin",
+          "pos": 0,
+          "gold": 0
+        }
+      ]
+    },
+    {
+      "width": 7,
+      "height": 7,
+      "explored": false,
+      "exits": [
+        {
+          "x": 4,
+          "y": 0,
+          "to": 48,
+          "label": ">"
+        },
+        {
+          "x": 6,
+          "y": 0,
+          "to": 47,
+          "label": ">"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "to": 52,
+          "label": "<"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "to": 62,
+          "label": "v"
+        }
+      ]
+    },
+    {
+      "width": 5,
+      "height": 3,
+      "explored": false,
+      "exits": [
+        {
+          "x": 0,
+          "y": 0,
+          "to": 44,
+          "label": "^"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "to": 57,
+          "label": "v"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "to": 56,
+          "label": ">"
+        }
+      ],
+      "monsters": [
+        {
+          "type": "Goblin",
+          "pos": 0,
+          "gold": 16
+        }
+      ]
+    },
+    {
+      "width": 3,
+      "height": 7,
+      "explored": false,
+      "exits": [
+        {
+          "x": 2,
+          "y": 0,
+          "to": 66,
+          "label": ">"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "to": 64,
+          "label": "v"
+        }
+      ]
+    },
+    {
+      "width": 3,
+      "height": 7,
+      "explored": false,
+      "exits": [
+        {
+          "x": 0,
+          "y": 0,
+          "to": 54,
+          "label": "<"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "to": 49,
+          "label": ">"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "to": 60,
+          "label": "v"
+        }
+      ]
+    },
+    {
+      "width": 3,
+      "height": 5,
+      "explored": false,
+      "exits": [
+        {
+          "x": 2,
+          "y": 0,
+          "to": 54,
+          "label": "^"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "to": 59,
+          "label": ">"
+        }
+      ],
+      "monsters": [
+        {
+          "type": "Hobgoblin",
+          "pos": 0,
+          "gold": 580
+        }
+      ]
+    },
+    {
+      "width": 5,
+      "height": 5,
+      "explored": false,
+      "exits": [
+        {
+          "x": 4,
+          "y": 3,
+          "to": 60,
+          "label": ">"
+        }
+      ]
+    },
+    {
+      "width": 3,
+      "height": 5,
+      "explored": false,
+      "exits": [
+        {
+          "x": 0,
+          "y": 0,
+          "to": 57,
+          "label": "<"
+        }
+      ]
+    },
+    {
+      "width": 7,
+      "height": 3,
+      "explored": false,
+      "exits": [
+        {
+          "x": 6,
+          "y": 0,
+          "to": 51,
+          "label": "^"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "to": 58,
+          "label": "<"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "to": 56,
+          "label": "v"
+        }
+      ],
+      "monsters": [
+        {
+          "type": "Hobgoblin",
+          "pos": 0,
+          "gold": 10
+        }
+      ]
+    },
+    {
+      "width": 5,
+      "height": 3,
+      "explored": false,
+      "exits": [
+        {
+          "x": 4,
+          "y": 0,
+          "to": 51,
+          "label": "^"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "to": 67,
+          "label": "v"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "to": 62,
+          "label": ">"
+        }
+      ]
+    },
+    {
+      "width": 5,
+      "height": 3,
+      "explored": false,
+      "exits": [
+        {
+          "x": 4,
+          "y": 0,
+          "to": 53,
+          "label": "^"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "to": 61,
+          "label": "<"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "to": 63,
+          "label": ">"
+        }
+      ]
+    },
+    {
+      "width": 5,
+      "height": 3,
+      "explored": false,
+      "exits": [
+        {
+          "x": 0,
+          "y": 2,
+          "to": 62,
+          "label": "<"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "to": 67,
+          "label": "v"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "to": 64,
+          "label": ">"
         }
       ],
       "monsters": [
@@ -1046,15 +1769,27 @@
       "gold": 9
     },
     {
-      "width": 1,
-      "height": 1,
+      "width": 3,
+      "height": 3,
       "explored": false,
       "exits": [
         {
           "x": 0,
           "y": 0,
-          "to": 1,
+          "to": 63,
+          "label": "<"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "to": 55,
           "label": "^"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "to": 67,
+          "label": "<"
         }
       ],
       "monsters": [
@@ -1064,40 +1799,76 @@
     },
     {
       "width": 1,
-      "height": 1,
+      "height": 5,
       "explored": false,
       "exits": [
         {
           "x": 0,
           "y": 0,
-          "to": 1,
-          "label": "^"
+          "to": 15,
+          "label": "<"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "to": 12,
+          "label": ">"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "to": 23,
+          "label": "v"
         }
       ]
     },
     {
       "width": 1,
-      "height": 1,
+      "height": 7,
       "explored": false,
       "exits": [
         {
           "x": 0,
           "y": 0,
-          "to": 1,
+          "to": 41,
           "label": "^"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "to": 47,
+          "label": ""
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "to": 55,
+          "label": "<"
         }
       ]
     },
     {
-      "width": 1,
+      "width": 17,
       "height": 1,
       "explored": false,
       "exits": [
         {
           "x": 0,
           "y": 0,
-          "to": 1,
+          "to": 61,
           "label": "^"
+        },
+        {
+          "x": 14,
+          "y": 0,
+          "to": 63,
+          "label": "^"
+        },
+        {
+          "x": 15,
+          "y": 0,
+          "to": 64,
+          "label": ">"
         }
       ]
     }

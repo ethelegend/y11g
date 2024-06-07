@@ -1,19 +1,29 @@
+/*
+    This class handles the main functions of the game.
+    It lets you enter a room, displays it and the exits, and prompts you to go to Attack if there are enemies
+    Its code structure is that every time a room changes, newRoom() gets called, and it calls emptyRoom() or occupiedRoom().
+*/
+
 package main;
+
 // GUI elements
 import javax.swing.*;
 import java.awt.GridLayout;
+
 // Entity classes
 import oop.entity.Entity;
 import oop.entity.GiantRat;
 import oop.entity.Goblin;
 import oop.entity.Hobgoblin;
 import oop.entity.Wolf;
+
 // JSON objects
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
 // Window and player objects
-import util.Static;
-// This is used once because i need the one line element removal
+
+// This is used once because i need the one line element removal and didnt want to have to code it
 import java.util.ArrayList;
 
 public class Main {
@@ -23,47 +33,12 @@ public class Main {
     boolean debug; // Shows room numbers by default if true, when false you have to have visited/cleared the room before
     final int monsterTypes = 4; // Should probably replace this with an enum or something but im kinda running out of time to learn how to do it
     public Main(JSONArray a){
-        // Window and quit option setup because util.Static doesn't have a constructor
-        Static.window.setVisible(true);
-        Static.window.toFront();
-        Static.window.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-
-        JMenuItem quit = new JMenuItem("Quit");
-        quit.addActionListener(l -> {
-            JButton[] b = new JButton[]{new JButton("OK")};
-            b[0].addActionListener(m -> System.exit(0));
-            Static.infoPopup("You collected a total of " + Static.player.gold + " gold!", b);
-        });
-        Static.menu.add(quit);
-
-        JMenuItem look = new JMenuItem("Look");
-        look.addActionListener(l -> {
-            JFrame window = new JFrame();
-            window.setVisible(true);
-            window.toFront();
-            window.add(new JLabel("You see a room somewhere in New Zealand"));
-        });
-        Static.menu.add(look);
-
-        JMenuItem place = new JMenuItem("Place");
-        look.addActionListener(l -> {
-            JFrame window = new JFrame();
-            window.setVisible(true);
-            window.toFront();
-            if (Static.player.gold == 0) {
-                window.add(new JLabel("You don't have anything to place right now",SwingConstants.CENTER));
-            } else {
-                window.add(new JLabel("You place a coin on the ground. Unfortunately it rolls into a storm drain",SwingConstants.CENTER));
-            }
-            window.setSize(100, 50);
-        });
-        Static.menu.add(place);
-
-        rooms = a; // Initialises the JSONArray
+        rooms = a; // Saves the JSONArray
         newRoom();
     }
     public void newRoom() { // Very self explanatory
-        JSONObject room = (JSONObject) rooms.get(currentRoom); // The one annoying thing about json.simple is that the default child object is Object and not JSONObject
+        JSONObject room = (JSONObject) rooms.get(currentRoom);
+        emptyRoom(room);
         if (room.containsKey("monsters")) {
             occupiedRoom(room);
         } else {
@@ -72,13 +47,13 @@ public class Main {
     }
     private void emptyRoom(JSONObject room) { // When there are no monsters
         Static.window.getContentPane().removeAll();
-        boolean explored = (boolean) room.put("explored", true); // It does what I need it to, even if intellij doesnt like how unsanitised it is
+        boolean explored = (boolean) room.put("explored", true); // It does what I need it to, even if IntelliJ doesnt like how unsanitised it is
         // Sets the title of the room
         Static.window.setTitle((room.containsKey("title"))
                 ? (String) room.get("title")
                 : ((debug || explored)
-                ? Integer.toString(currentRoom)
-                : ""));
+                        ? Integer.toString(currentRoom)
+                        : ""));
         // Gets the width and height of the room. If i didnt cast it to a long beforehand, java would throw an error because JSONObject stores it as a long
         int width = (int) ((long) room.get("width"));
         int height = (int) ((long) room.get("height"));
@@ -101,7 +76,7 @@ public class Main {
                     : (String) j.get("label"));
             tile[x][y].addActionListener(l -> { // Lambda that moves you to a new room
                 previousRoom = currentRoom;
-                currentRoom = (int) ((long) j.get("to"));
+                currentRoom = (int) ((long) j.get("to")); // MOVE FORWARDS / BACKWARDS
                 newRoom();
             });
         }
@@ -120,7 +95,7 @@ public class Main {
     }
     private void occupiedRoom(JSONObject room) {
         Entity[] monsters = new Entity[((JSONArray) room.get("monsters")).size()]; // Array of monster objects
-        ArrayList<String> monsterList = new ArrayList<String>(); // ArrayList of monster names
+        ArrayList<String> monsterList = new ArrayList<>(); // ArrayList of monster names
 
         for (int i = 0; i < monsters.length; i++) { // Copies monster JSONObjects to the array and arrayList
             JSONObject m = (JSONObject) ((JSONArray) room.get("monsters")).get(i);

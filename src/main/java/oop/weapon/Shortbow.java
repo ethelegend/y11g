@@ -6,6 +6,6 @@ public class Shortbow extends Weapon {
         this.range = 80;
         this.hit = hitBonus;
         this.base = damageBonus;
-        this.dice = new int[]{6};
+        this.dice = new int[]{6}; // 1d6
     }
 }

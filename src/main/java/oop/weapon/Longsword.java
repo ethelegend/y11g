@@ -5,6 +5,6 @@ public class Longsword extends Weapon {
         this.range = 5;
         this.hit = hitBonus;
         this.base = damageBonus;
-        this.dice = new int[]{10};
+        this.dice = new int[]{10}; // 1d10
     }
 }

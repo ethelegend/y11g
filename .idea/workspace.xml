@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e3d8e213-38ef-482b-aa98-b91f4c22f209" name="Changes" comment="Done">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_06_24_15_57_[Changes]/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_06_24_15_57_[Changes]/Window.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_06_24_15_57_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_06_24_15_57__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_06_24_16_40_[Changes]/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_06_24_16_40_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_06_24_16_40__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/main/Attack.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/map.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/oop/entity/Entity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/oop/entity/GiantRat.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/oop/entity/Goblin.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/oop/entity/Hobgoblin.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/oop/entity/Warrior.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/oop/entity/Wolf.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/oop/weapon/Bite.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/oop/weapon/Crossbow.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/oop/weapon/Greatsword.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/oop/weapon/Longbow.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/oop/weapon/Longsword.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/oop/weapon/Scimitar.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/oop/weapon/Shortbow.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/oop/weapon/Weapon.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/util/Dice.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/util/Static.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/Attack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Attack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/entity/GiantRat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/entity/GiantRat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/entity/Goblin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/entity/Goblin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/entity/Hobgoblin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/entity/Hobgoblin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/entity/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/entity/Warrior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/entity/Wolf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/entity/Wolf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/weapon/Bite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/weapon/Bite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/weapon/Crossbow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/weapon/Crossbow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/weapon/Greatsword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/weapon/Greatsword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/weapon/Longbow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/weapon/Longbow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/weapon/Longsword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/weapon/Longsword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/weapon/Scimitar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/weapon/Scimitar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/weapon/Shortbow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/weapon/Shortbow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/weapon/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/weapon/Weapon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Dice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Initialiser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Static.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Static.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/rooms.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/rooms.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/rooms.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/rooms.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" show_ignored="true" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ethelegend&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="8631b137-6182-494f-99de-1f42c95e68a3" />
+        <option name="url" value="https://github.com/ethelegend/y11g.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2ehMcoKrkD5fqRaFd4dtbLXTZ3Z" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Initialiser.executor": "Run",
+    "Application.Static.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/miche/IdeaProjects/y11g/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.editor",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="oop.weapon" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Static">
+    <configuration name="Initialiser" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="util.Initialiser" />
+      <module name="y11g" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Static" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.Static" />
+      <module name="y11g" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Static" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e3d8e213-38ef-482b-aa98-b91f4c22f209" name="Changes" comment="" />
+      <created>1712352439156</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1712352439156</updated>
+      <workItem from="1712352440224" duration="132000" />
+      <workItem from="1712352596673" duration="13423000" />
+      <workItem from="1712567261674" duration="76000" />
+      <workItem from="1712648276205" duration="4202000" />
+      <workItem from="1712652501652" duration="784000" />
+      <workItem from="1714617787279" duration="657000" />
+      <workItem from="1715668191477" duration="5362000" />
+      <workItem from="1715716858185" duration="4367000" />
+      <workItem from="1717559824576" duration="10057000" />
+      <workItem from="1717655776173" duration="5081000" />
+      <workItem from="1717735188933" duration="10317000" />
+    </task>
+    <task id="LOCAL-00001" summary="remaking map to add monsters and loot">
+      <option name="closed" value="true" />
+      <created>1712385468871</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1712385468871</updated>
+    </task>
+    <task id="LOCAL-00002" summary="minor stuffs">
+      <option name="closed" value="true" />
+      <created>1712567323619</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1712567323619</updated>
+    </task>
+    <task id="LOCAL-00003" summary="working on entity framework">
+      <option name="closed" value="true" />
+      <created>1712652595066</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1712652595067</updated>
+    </task>
+    <task id="LOCAL-00004" summary="wip player attacks">
+      <option name="closed" value="true" />
+      <created>1715682487213</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715682487213</updated>
+    </task>
+    <task id="LOCAL-00005" summary="i am almost done and i am very happy about it">
+      <option name="closed" value="true" />
+      <created>1717581226003</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1717581226003</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feature complete!!1!11!!!1!1!!1!!1!!1!">
+      <option name="closed" value="true" />
+      <created>1717667586431</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1717667586431</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="remaking map to add monsters and loot" />
+    <MESSAGE value="minor stuffs" />
+    <MESSAGE value="working on entity framework" />
+    <MESSAGE value="wip player attacks" />
+    <MESSAGE value="i am almost done and i am very happy about it" />
+    <MESSAGE value="feature complete!!1!11!!!1!1!!1!!1!!1!" />
+    <MESSAGE value="v1.0" />
+    <MESSAGE value="super duper almost done" />
+    <MESSAGE value="Done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Done" />
+  </component>
+</project>

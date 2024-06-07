@@ -6,6 +6,6 @@ public class Crossbow extends Weapon {
         this.range = 400;
         this.hit = hitBonus;
         this.base = damageBonus;
-        this.dice = new int[]{10};
+        this.dice = new int[]{10}; // 1d10
     }
 }
