@@ -6,6 +6,6 @@ public class Bite extends Weapon {
         this.range = 5;
         this.hit = hitBonus;
         this.base = damageBonus;
-        this.dice = dice;
+        this.dice = dice; // Unique because different creatures' bites deal different damage
     }
 }

@@ -4,13 +4,14 @@ import oop.entity.Entity;
 import oop.weapon.Weapon;
 import util.Static;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 public class Attack {
-    Entity target;
-    String targetTitle;
+    Entity target; // removing this would mostly be fine, but some uses of this would require some refactoring
+    String targetTitle; // "The enemy " if only 1 enemy, "Enemy # " if more than 1
     Entity[] monsters;
-    int roomRadius;
+    int roomRadius; // Would be more annoying to make a 2 dimensional arena, and 1d works well
     int entity;
     int step;
     JButton[] options;
@@ -28,7 +29,7 @@ public class Attack {
         step = 0; // 2nd index for which step of the attack the entity is on
         entity++;
         if (entity == monsters.length) {
-            entity = -1;
+            entity = -1; // Next time, entity = 0
             manualAttack(0);
         } else {
             if (entity == 0) { // Initialises the very expressive options for reacting to monster attacks
@@ -42,100 +43,89 @@ public class Attack {
             automaticAttack();
         }
     }
-    public void manualAttack(int o) {
-        boolean canAttack;
+    public void manualAttack(int o) { // Which button you pressed. Specific format depends on which step you are on
         step++;
         switch (step) {
-            case 1:
+            case 1: // Choosing where to move
                 options = new JButton[2 * roomRadius / 5 + 1];
-                int p = -Static.player.pos - roomRadius;
+                int p = -Static.player.pos - roomRadius; // Position of each tile relative to the player position. Stays synchronised because it is incremented by 5ft each loop
                 for (int i = 0; i < options.length; i++) {
                     // i is the index, p is the relative position
-                    if (Static.player.canMove(p)) {
-                        options[i] = new JButton(Math.abs(p) + "ft");
-                        final int f = p;
+                    if (Static.player.canMove(Static.player.pos + p)) { // If the position is reachable
+                        options[i] = new JButton(Math.abs(p) + "ft"); // Write distance
+                        final int f = p; // To have a variable in a lambda it has to be final or semi-final, so this is necessary for these and other buttons
                         options[i].addActionListener(l -> manualAttack(f));
                     } else {
-                        options[i] = new JButton();
+                        options[i] = new JButton(); // Blank button to indicate unmoveability
                     }
                     p += 5;
                 }
-                for (int i = 0; i < monsters.length; i++) {
-                    options[(monsters[i].pos + roomRadius) / 5] = new JButton(monsters[i].name + " (" + monsters[i].hp + "/" + monsters[i].maxHP + ")");
+                for (int i = 0; i < monsters.length; i++) { // Displays where the monsters are. If a monster doesn't show up, they are on the same tile as another monster, which would take a lot of refactoring to patch
+                    options[(monsters[i].pos + roomRadius) / 5] = new JButton(monsters[i].name + " (" + monsters[i].hp + "/" + monsters[i].maxHP + ")"); // This has the benefits of setting the text and removing the actionListener, making it impossible to be on the same tile as an enemy
                 }
                 Static.infoPopup("Where will you move?", options);
                 break;
-            case 2: // Choosing which enemy to attack, fairly self-explanatory
-                Static.player.pos += o;
+            case 2: // Choosing what to attack
+                Static.player.pos += o; // Moves the player to the tile they selected
                 options = new JButton[monsters.length];
+                // Finds the weapon with the maximum range
                 Weapon maxRange = null;
                 for (Weapon w : Static.player.weapons) {
                     if (maxRange == null || w.range > maxRange.range) {
                         maxRange = w;
                     }
                 }
-                canAttack = false;
+                boolean canAttack = false; // If this is false after the for loop, no enemies are in range and you need to skip your turn
                 for (int i = 0; i < monsters.length; i++) {
-                    assert maxRange != null;
-                    if (maxRange.canAttack(monsters[i].pos)) {
+                    if (maxRange.canAttack(monsters[i].pos)) { // If enemy in range
                         canAttack = true;
-                        options[i] = new JButton(monsters[i].name + " (" + monsters[i].hp + "/" + monsters[i].maxHP + ", " + Math.abs(Static.player.pos - monsters[i].pos) + "ft)");
-                        final int f = i; // must be final or semi-final
+                        options[i] = new JButton(monsters[i].name + " (" + monsters[i].hp + "/" + monsters[i].maxHP + ", " + Math.abs(Static.player.pos - monsters[i].pos) + "ft)"); // Displays name, health, and relative position
+                        final int f = i;
                         options[i].addActionListener(l -> manualAttack(f));
                     } else {
                         options[i] = new JButton(monsters[i].name + " (too far away)");
                     }
                 }
                 if (canAttack) {
-                    Static.infoPopup("Which enemy will you attack?", options);
-                } else {
+                    Static.infoPopup("Which enemy will you attack?", options); // Business as usual
+                } else { // Can't attack, need new options
                     options = new JButton[1];
                     options[0] = new JButton("OK");
                     options[0].addActionListener(l -> battle());
                     Static.infoPopup("You are too far away to attack", options);
                 }
-
                 break;
-            case 3:
+            case 3: // Choosing which weapon to attack with
                 target = monsters[o];
                 options = new JButton[Static.player.weapons.length];
-                canAttack = false;
-                for (int i = 0; i < options.length; i++) {
-                    if (Static.player.weapons[i].canAttack(Static.player.pos - target.pos)) {
-                        canAttack = true;
+                for (int i = 0; i < options.length; i++) { // For each of the player's weapons
+                    if (Static.player.weapons[i].canAttack(Static.player.pos - target.pos)) { // If the target is in range
                         options[i] = new JButton(Static.player.weapons[i].name);
-                        final int f = i; // must be final or semi-final
+                        final int f = i;
                         options[i].addActionListener(l -> manualAttack(Static.player.weapons[f].attack(target.ac)));
                     } else {
-                        options[i] = new JButton(Static.player.weapons[i].name + " (Too far away)");
+                        options[i] = new JButton(Static.player.weapons[i].name + " (Too far away)"); // No need to check if any weapons are in range because last step required you to pick an enemy in range of at least 1 of your weapons
                     }
                 }
-                if (canAttack) {
-                    Static.infoPopup("What weapon will you use?", options);
-                } else {
-                    options = new JButton[1];
-                    options[0] = new JButton("OK");
-                    options[0].addActionListener(l -> battle());
-                    Static.infoPopup("You are too far away to attack", options);
-                }
+                Static.infoPopup("What weapon will you use?", options);
+
                 break;
             case 4:
+                // Out of your hands
                 options = new JButton[1];
                 options[0] = new JButton("OK");
-                if (o == 0) {
+                options[0].addActionListener(l -> battle());
+                if (o == 0) { // The attack function returns 0 for a missed attack, because a successful attack always does at least 1 damage
                     Static.infoPopup("Your attack missed", options);
-                    options[0].addActionListener(l -> battle());
                 } else {
-                    if (target.hp > o) {
-                        options[0].addActionListener(l -> battle());
+                    if (target.hp > o) { // If the enemy can withstand the attack
                         target.hp -= o;
                     } else {
-                        target.hp = 0;
+                        target.hp = 0; // Since target is a reference to an element in monsters, this allows me to find the index of the monster
                         Static.player.gold += target.gold;
-                        if (monsters.length > 1) {
-                            options[0].addActionListener(l -> battle());
-                            Entity[] monstersTemp = new Entity[monsters.length - 1];
-                            for (int i = 0; i < monstersTemp.length; i++) {
+                        if (monsters.length > 1) { // If there are more monsters, shrink the array (I can't use arrayList because i can't cast it back from Object to Entity for some reason
+                            Entity[] monstersTemp = new Entity[monsters.length - 1]; // Temp array
+                            for (int i = 0; i < monstersTemp.length; i++) { // This will copy element i until it finds the dead monster, then starts copying i+1, deleting it afterwards to tell the next iteration to continue
                                 if (monsters[i] == null || monsters[i].hp == 0) {
                                     monstersTemp[i] = monsters[i + 1];
                                     monsters[i + 1] = null;
@@ -144,7 +134,8 @@ public class Attack {
                                 }
                             }
                             monsters = monstersTemp;
-                        } else {
+                        } else { // You defeated all the enemies
+                            options[0] = new JButton("OK");
                             options[0].addActionListener(l -> origin.newRoom());
                         }
                     }
@@ -189,7 +180,8 @@ public class Attack {
                 }
                 break;
             case 2:
-                 Weapon chosen = null;
+                // Since weapons are added from largest to smallest range, this gets the weapon with the smallest range that can attack, which is usually the strongest valid weapon
+                Weapon chosen = null;
                 for (Weapon w : target.weapons) {
                     if (w.canAttack(target.pos - Static.player.pos)) {
                         chosen = w;
@@ -198,11 +190,11 @@ public class Attack {
                     }
                 }
                 if (chosen == null) {
-                    Static.infoPopup(targetTitle + " was too far away to attack", options);
+                    Static.infoPopup(targetTitle + " was too far away to attack", options); // Out of range
                 } else {
-                    int damage = chosen.attack(Static.player.ac);
-                    Static.player.hp -= damage;
-                    Static.infoPopup(targetTitle + " attacked with their " + chosen.name + " and " + ((damage == 0) ? "missed" : "dealt " + damage + " damage"), options);
+                    int damage = chosen.attack(Static.player.ac); // Attack
+                    Static.player.hp -= damage; // Damage
+                    Static.infoPopup(targetTitle + " used their " + chosen.name.toLowerCase() + " and " + ((damage == 0) ? "missed" : "dealt " + damage + " damage"), options); // Message
                 }
                 break;
             case 3:
@@ -210,12 +202,13 @@ public class Attack {
                     Static.infoPopup("You are at " + Static.player.hp + " health", options);
                 } else { // If player is dead :(
                     Static.window.removeAll();
+                    Static.window.setJMenuBar(Static.menu); // No button for you, only menu
                     Static.window.add(new JLabel("You have passed out"));
-                    Static.window.setSize(100,100);
+                    Static.window.setSize(100,100+Static.menu.getHeight());
                 }
                 break;
             case 4:
-                battle();
+                battle(); // I don't change the actionListener because it stays the same for all enemies, letting me only change it after a player turn
                 break;
         }
     }

@@ -13,24 +13,21 @@ import java.awt.GridLayout;
 
 public class Static { // Dedicated class to contain static window and player objects
     public static JFrame window = new JFrame();
-    public static JMenuBar quit = new JMenuBar();
+    public static JMenuBar menu = new JMenuBar();
     public static Entity player = new Warrior();
-    public static void infoPopup(String labelText, JButton[] button){
+    public static void infoPopup(String message, JButton[] button){ // This template is used in both main.Main and main.Attack, so it makes more sense to put it here
         window.getContentPane().removeAll();
-        window.add(new JLabel(labelText,SwingConstants.CENTER));
+        window.setJMenuBar(menu);
+        window.add(new JLabel(message,SwingConstants.CENTER)); // Adds the message
 
-        JPanel buttons = new JPanel();
+        JPanel buttons = new JPanel(); // Container for buttons so GridLayout thinks its 1 object and works correctly
         window.add(buttons);
-        buttons.setLayout(new GridLayout());
+        buttons.setLayout(new GridLayout()); // So that buttons are ordered horizontally, not vertically
         for (JButton b:button) {
             buttons.add(b);
         }
 
-
         window.setLayout(new GridLayout(2,1));
-        window.setSize((int) window.getPreferredSize().getWidth() + 10, 200);
-        window.setJMenuBar(quit);
-        window.revalidate();
-        window.repaint();
+        window.setSize((int) window.getPreferredSize().getWidth() + 10, 200 + menu.getHeight());
     }
 }
