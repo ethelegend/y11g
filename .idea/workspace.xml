@@ -1,61 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="y11g:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e3d8e213-38ef-482b-aa98-b91f4c22f209" name="Changes" comment="Done">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_06_24_15_57_[Changes]/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_06_24_15_57_[Changes]/Window.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_06_24_15_57_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_06_24_15_57__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_06_24_16_40_[Changes]/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_06_24_16_40_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_06_24_16_40__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/main/Attack.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/map.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/oop/entity/Entity.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/oop/entity/GiantRat.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/oop/entity/Goblin.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/oop/entity/Hobgoblin.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/oop/entity/Warrior.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/oop/entity/Wolf.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/oop/weapon/Bite.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/oop/weapon/Crossbow.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/oop/weapon/Greatsword.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/oop/weapon/Longbow.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/oop/weapon/Longsword.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/oop/weapon/Scimitar.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/oop/weapon/Shortbow.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/oop/weapon/Weapon.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/util/Dice.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/util/Static.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/Attack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Attack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/entity/GiantRat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/entity/GiantRat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/entity/Goblin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/entity/Goblin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/entity/Hobgoblin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/entity/Hobgoblin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/entity/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/entity/Warrior.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/entity/Wolf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/entity/Wolf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/weapon/Bite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/weapon/Bite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/weapon/Crossbow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/weapon/Crossbow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/weapon/Greatsword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/weapon/Greatsword.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/weapon/Longbow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/weapon/Longbow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/weapon/Longsword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/weapon/Longsword.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/weapon/Scimitar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/weapon/Scimitar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/weapon/Shortbow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/weapon/Shortbow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/weapon/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/weapon/Weapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Dice.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Initialiser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Static.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Static.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/rooms.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/rooms.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/rooms.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/rooms.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/y11g_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/y11g_jar/y11g.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,20 +50,21 @@
   "keyToString": {
     "Application.Initialiser.executor": "Run",
     "Application.Static.executor": "Run",
+    "JAR Application.JAR.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/miche/IdeaProjects/y11g/src/main/resources",
+    "last_opened_file_path": "C:/Users/miche/IdeaProjects/y11g/out/artifacts/y11g_jar/y11g.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.0",
+    "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.editor",
     "vue.rearranger.settings.migration": "true"
@@ -117,19 +76,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Static">
-    <configuration name="Initialiser" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="util.Initialiser" />
-      <module name="y11g" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Static" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.Static" />
       <module name="y11g" />
@@ -143,6 +89,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="JAR" type="JarApplication">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/y11g_jar/y11g.jar" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\miche\IdeaProjects\y11g" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Static" />
+      <item itemvalue="JAR Application.JAR" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Static" />
@@ -167,7 +125,7 @@
       <workItem from="1715716858185" duration="4367000" />
       <workItem from="1717559824576" duration="10057000" />
       <workItem from="1717655776173" duration="5081000" />
-      <workItem from="1717735188933" duration="10317000" />
+      <workItem from="1717735188933" duration="11954000" />
     </task>
     <task id="LOCAL-00001" summary="remaking map to add monsters and loot">
       <option name="closed" value="true" />
@@ -217,7 +175,39 @@
       <option name="project" value="LOCAL" />
       <updated>1717667586431</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Done">
+      <option name="closed" value="true" />
+      <created>1717745563195</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1717745563195</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Done">
+      <option name="closed" value="true" />
+      <created>1717745588747</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1717745588747</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Done">
+      <option name="closed" value="true" />
+      <created>1717745711781</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1717745711781</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Done">
+      <option name="closed" value="true" />
+      <created>1717745717277</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1717745717277</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
